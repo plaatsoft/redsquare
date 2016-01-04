@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RedSquare</string>
+
+    <string name="mode_ready">RedSquare\nPress Search To Play</string>
+  	<string name="mode_pause">Paused\nPress Search To Resume</string>
+  	<string name="mode_lose_prefix">Game Over\nScore: </string>
+  	<string name="mode_lose_suffix">\nPress Search To Play</string>
+</resources>

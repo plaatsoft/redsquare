@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <nl.plaatsoft.redsquare.GameView 
+    	android:id="@+id/game_view"
+    	android:layout_height="wrap_content" 
+    	android:layout_width="wrap_content" 
+    	android:layout_weight="1" 
+    	android:layout_margin="0dip" 
+    	 />
+    	
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" >
+		
+		<TextView
+		 	android:id="@+id/game_text"
+			android:visibility="visible"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:gravity="center_horizontal"
+			android:textColor="#ffffffff"
+			android:textSize="24sp" />
+	</RelativeLayout>
+</FrameLayout>
