@@ -1,0 +1,27 @@
+
+# Execute script as follows 
+# fakeroot ./make_deb
+
+# Install package with
+# sudo dpkg -i ./redsquare-1.0-i386.deb
+
+#tar -xf debian.tar
+
+rm  redsquare-1.0-i386.deb
+cp RedSquare debian/usr/games/redsquare
+strip debian/usr/games/redsquare
+chrpath -d debian/usr/games/redsquare
+
+find ./debian -type d | xargs chmod 755
+find ./debian | xargs chown root:root 
+find ./debian/usr -type f | xargs chmod 644
+
+chmod 755 debian/usr/games/redsquare
+chmod 755 debian/DEBIAN/postinst
+chmod 755 debian/DEBIAN/prerm
+
+dpkg-deb --build debian
+
+mv debian.deb redsquare-1.0-i386.deb
+
+lintian redsquare-1.0-i386.deb

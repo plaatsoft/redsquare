@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/plaatsoft.png</file>
+    </qresource>
+</RCC>
