@@ -36,7 +36,6 @@
 
 /**
  * @mainpage RedSquare Documentation
- * @image html RedSquare.jpg
  * Welcome to the RedSqaure documentation.
  *
  * @section Introduction

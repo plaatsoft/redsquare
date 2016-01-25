@@ -323,7 +323,6 @@ enum
 
 /**
  * @mainpage Wii RedSquare Documentation
- * @image html RedSquare.png
  * Welcome to the RedSquare documentation.
  *
  * @section Introduction
