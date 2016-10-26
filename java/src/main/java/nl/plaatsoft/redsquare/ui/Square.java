@@ -13,7 +13,6 @@ public class Square extends ImageView{
 	
 	private double y;
 	
-
 	private int step;
 	
 	private double maxWidth;

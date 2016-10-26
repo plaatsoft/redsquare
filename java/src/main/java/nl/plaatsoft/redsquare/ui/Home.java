@@ -24,11 +24,12 @@ public class Home extends Pane {
 	private Square blue4;
 	private Square red;
 	
-	final String appVersion = "0.1";
+	private final String appVersion = "0.1";
+	private AnimationTimer timer;
 	
 	Home (final Navigator page) {
 		
-		Image image1 = new Image("images/background.png");
+		Image image1 = new Image("images/background1.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		Background background = new Background(backgroundImage);
@@ -70,7 +71,6 @@ public class Home extends Pane {
 			public void handle(ActionEvent event) {
 				System.out.println("Play");
 				page.setGame();		
-				page.getGame().restart();
 			}
 		});
     
@@ -176,19 +176,20 @@ public class Home extends Pane {
 		getChildren().add(btn6);
 		getChildren().add(btn7);
 		
-		 AnimationTimer timer1 = new AnimationTimer() {
+		timer = new AnimationTimer() {
 			 
-	            @Override
-	            public void handle(long now) {
-	            	blue1.move();
-	            	blue2.move();
-	            	blue3.move();
-	            	blue4.move();
-	            	red.move();
-	            }
-	        };
-
-	        
-	        timer1.start();
+	       @Override
+	       public void handle(long now) {
+	          	blue1.move();
+	           	blue2.move();
+	           	blue3.move();
+	           	blue4.move();
+	           	red.move();
+	       }
+	    };
+    }
+	
+	void draw() {		
+		timer.start();
 	}
 }

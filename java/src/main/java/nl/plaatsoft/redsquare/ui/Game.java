@@ -37,24 +37,13 @@ public class Game extends Pane {
 	private int step = 1;
 	private double width = 640;
 	private double height = 480;
-				
-	public void restart() {
-		starttime = new Date();
-		leveltime = new Date(); 
-		score = 0;
-		level = 1;
-		
-		blue1.setPosition(0, 0);
-		blue2.setPosition(500, 300);
-		blue3.setPosition(0, 400);
-		blue4.setPosition(500, 200);
-	}
-	
+	private AnimationTimer timer;
+					
 	Game(final Navigator page) {
 					
 		formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
 		
-		Image image1 = new Image("images/background.png");
+		Image image1 = new Image("images/background1.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		Background background = new Background(backgroundImage);
@@ -131,35 +120,48 @@ public class Game extends Pane {
 		getChildren().add(label3);   	
 		getChildren().add(btn1);
 		
-		 AnimationTimer timer1 = new AnimationTimer() {
+		timer = new AnimationTimer() {
 			 
-	            @Override
-	            public void handle(long now) {
-	            	blue1.move();
-	            	blue2.move();
-	            	blue3.move();
-	            	blue4.move();
+	       @Override
+	       public void handle(long now) {
+	    	   blue1.move();
+	           blue2.move();
+	           blue3.move();
+	           blue4.move();
 	           
-	            	score++;
-	            	label1.setText(""+score);
+	           score++;
+	           label1.setText(""+score);
 	            	
-	            	Date current = new Date();	            	
-	            	long diff1 = current.getTime() - starttime.getTime();
-	            	long diff2 = current.getTime() - leveltime.getTime();
+	           Date current = new Date();	            	
+	           long diff1 = current.getTime() - starttime.getTime();
+	           long diff2 = current.getTime() - leveltime.getTime();
 
-	            	if ( diff2>10000 ) {
-	            		leveltime = new Date(); 
-	            		level++;
+	           if ( diff2>10000 ) {
+	        	   leveltime = new Date(); 
+	            	level++;
 	       	            		
-	            		blue1.setStep(blue1.getStep()+1);
-	            		blue2.setStep(blue2.getStep()+1);	
-	            		blue3.setStep(blue3.getStep()+1);	
-	            		blue4.setStep(blue4.getStep()+1);	
-	            	}
-	            	label3.setText(""+level);
-	            	label2.setText(""+formatter.format(diff1));
+	            	blue1.setStep(blue1.getStep()+1);
+	            	blue2.setStep(blue2.getStep()+1);	
+	            	blue3.setStep(blue3.getStep()+1);	
+	            	blue4.setStep(blue4.getStep()+1);	
 	            }
-	        };	        
-	        timer1.start();
+	            label3.setText(""+level);
+	            label2.setText(""+formatter.format(diff1));
+	       }
+	   };	        
+	}
+	
+	public void draw() {
+		starttime = new Date();
+		leveltime = new Date(); 
+		score = 0;
+		level = 1;
+		
+		blue1.setPosition(0, 0);
+		blue2.setPosition(500, 300);
+		blue3.setPosition(0, 400);
+		blue4.setPosition(500, 200);
+		
+		timer.start();
 	}
 }

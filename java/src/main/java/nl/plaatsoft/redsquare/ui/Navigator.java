@@ -4,30 +4,30 @@ import javafx.scene.Scene;
 
 public class Navigator {
 	
+	private Intro1 intro1 = new Intro1(this);
+	private Intro2 intro2 = new Intro2(this);
 	private Home home = new Home(this);
 	private Game game = new Game(this);	
 	private Donate donate = new Donate(this);
 	private HighScore highScore = new HighScore(this);
 	private Credits credits = new Credits(this);	
 	private ReleaseNotes releaseNotes = new ReleaseNotes(this);
-	private Help help = new Help(this);	
-	
-	public void setHelp(Help help) {
-		this.help = help;
-	}
-
+	private Help help = new Help(this);		
 	private Scene scene;	
 				
 	Navigator() {
-		scene = new Scene(home, 640, 480);
+		scene = new Scene(intro1, 640, 480);
+		intro1.draw();
 	}
 	
 	public void setHome() {		
 		scene.setRoot(home);
+		home.draw();
 	}
 	
 	public void setGame() {
 		scene.setRoot(game);
+		game.draw();
 	}
 	
 	public void setDonate() {
@@ -50,6 +50,18 @@ public class Navigator {
 		scene.setRoot(help);
 	}
 	
+	public void setIntro1() {
+		scene.setRoot(intro1);
+		intro1.draw();
+	}
+	
+	public void setIntro2() {
+		scene.setRoot(intro2);
+		intro2.draw();
+	}
+		
+	/* ---------------------------------- */
+
 	public Scene getScene() {
 		return scene;
 	}
@@ -80,5 +92,13 @@ public class Navigator {
 
 	public Help getHelp() {
 		return help;
+	}
+
+	public Intro1 getIntro1() {
+		return intro1;
+	}
+	
+	public Intro2 getIntro2() {
+		return intro2;
 	}
 }

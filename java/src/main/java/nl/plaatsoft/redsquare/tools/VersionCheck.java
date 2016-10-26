@@ -6,14 +6,20 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class VersionCheck {
 
+
+	
 	public static String executePost(String targetURL, String product, String version) {
 
 		HttpURLConnection connection = null;
@@ -39,8 +45,7 @@ public class VersionCheck {
 			// Get Response
 			InputStream is = connection.getInputStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-			StringBuilder response = new StringBuilder(); // or StringBuffer if
-															// Java version 5+
+			StringBuilder response = new StringBuilder(); 
 			String line;
 			while ((line = rd.readLine()) != null) {
 				response.append(line);
