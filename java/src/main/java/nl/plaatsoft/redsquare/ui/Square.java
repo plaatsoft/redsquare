@@ -1,4 +1,4 @@
-package nl.plaatsoft.redsquare;
+package nl.plaatsoft.redsquare.ui;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

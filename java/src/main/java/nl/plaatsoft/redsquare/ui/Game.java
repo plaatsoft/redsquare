@@ -1,4 +1,4 @@
-package nl.plaatsoft.redsquare;
+package nl.plaatsoft.redsquare.ui;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package nl.plaatsoft.redsquare;
+package nl.plaatsoft.redsquare.ui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,16 +12,16 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 
-public class Credits extends Pane {
+public class ReleaseNotes extends Pane {
 
-	Credits(final Navigator page) {
+	ReleaseNotes(final Navigator page) {
 		
 		Image image1 = new Image("images/background.png");
     	BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
     	Background background = new Background(backgroundImage);
     	    	
-		Label label1 = new Label("Credits");
+		Label label1 = new Label("Release Notes");
 		label1.setLayoutX(30);
 		label1.setLayoutY(30);
 		label1.setStyle("-fx-font-size:30px; -fx-text-fill: white;");
@@ -43,5 +43,4 @@ public class Credits extends Pane {
 		getChildren().add(label1);
 		getChildren().add(btn1);
 	}
-
 }

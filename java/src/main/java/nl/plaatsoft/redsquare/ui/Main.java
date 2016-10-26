@@ -1,4 +1,4 @@
-package nl.plaatsoft.redsquare;
+package nl.plaatsoft.redsquare.ui;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -22,10 +22,10 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("images/logo3.png"));
         primaryStage.show();
         
-        String path = Main.class.getResource("/music/track1.mp3").toString();
-        Media media = new Media(path);
-        MediaPlayer mp = new MediaPlayer(media);
-        mp.play();
+        //String path = Main.class.getResource("/music/track1.mp3").toString();
+       // Media media = new Media(path);
+        //MediaPlayer mp = new MediaPlayer(media);
+        //mp.play();
     }
     
     public static void main(String[] args) {
