@@ -12,10 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
     	    	
     	Navigator page = new Navigator();
-    	
-    	//scene = new Scene(page.getHome(), 640, 480);
-    
-        primaryStage.setTitle("RedSquare v1.0");
+    	    
+        primaryStage.setTitle("RedSquare");
         primaryStage.setScene(page.getScene());
         primaryStage.sizeToScene();
         primaryStage.setResizable(false);

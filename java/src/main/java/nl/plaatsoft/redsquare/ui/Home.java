@@ -14,6 +14,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import nl.plaatsoft.redsquare.tools.VersionCheck;
 
 public class Home extends Pane {
 
@@ -22,9 +23,11 @@ public class Home extends Pane {
 	private Square blue3;
 	private Square blue4;
 	private Square red;
-		
+	
+	final String appVersion = "0.1";
+	
 	Home (final Navigator page) {
-			
+		
 		Image image1 = new Image("images/background.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
@@ -40,7 +43,7 @@ public class Home extends Pane {
 		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step, width, height);
 		red = new Square("redsquare.png", 10, 10, 0, 0, 5, width, height);
 	
-		Label label1 = new Label("RedSquare v1.0");
+		Label label1 = new Label("RedSquare v"+appVersion);
 		label1.setLayoutX(30);
 		label1.setLayoutY(30);
 		label1.setStyle("-fx-font-size:30px; -fx-text-fill: white;");
@@ -50,10 +53,11 @@ public class Home extends Pane {
 		label2.setLayoutY(65);
 		label2.setStyle("-fx-font-size:24px; -fx-text-fill: white;");
 	
-		Label label3 = new Label("Check the release notes for more information.");
+		VersionCheck versionCheck = new VersionCheck();			
+		Label label3 = new Label(VersionCheck.executePost("https://service.plaatsoft.nl", "Java-RedSquare", appVersion));
 		label3.setLayoutX(30);
 		label3.setLayoutY(425);
-		label3.setStyle("-fx-font-size:18px; -fx-text-fill: white;");
+		label3.setStyle("-fx-font-size:18px; -fx-text-fill: #e6ed13;");
 	    		
 		Button btn1 = new Button();
 		btn1.setText("Play");
