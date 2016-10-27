@@ -1,9 +1,5 @@
 package nl.plaatsoft.redsquare.ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -11,6 +7,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 
 public class Donate extends Pane {
@@ -39,18 +36,7 @@ public class Donate extends Pane {
     	y+=30;
     	MyLabel label8 = new MyLabel(30, y, "Click on the donate link and follow the instructions", 26);
     	       		
-		Button btn1 = new Button();
-        btn1.setText("Close");
-        btn1.setLayoutX(250);
-        btn1.setLayoutY(420);
-        btn1.setPrefWidth(150);
-        btn1.setStyle("-fx-font-size:18px;");
-        btn1.setOnAction(new EventHandler<ActionEvent>() {
- 
-            public void handle(ActionEvent event) {
-            	page.setHome();
-            }
-        });
+    	MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
                 
 		setBackground(background);
 		getChildren().add(label1);
@@ -61,7 +47,7 @@ public class Donate extends Pane {
 		getChildren().add(label6);
 		getChildren().add(label7);
 		getChildren().add(label8);		
-		getChildren().add(btn1);
+		getChildren().add(button1);
 	}
 	
 }

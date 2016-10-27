@@ -1,9 +1,5 @@
 package nl.plaatsoft.redsquare.ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -19,6 +15,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.Date;
 
+import nl.plaatsoft.redsquare.tools.MyButton;
+import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.Score;
 
 public class HighScore extends Pane {
@@ -29,18 +27,7 @@ public class HighScore extends Pane {
 	            new Score( new Date(), 3823, 5),
 	            new Score( new Date(), 3723, 4),
 	            new Score( new Date(), 3543, 3),
-	            new Score( new Date(), 2423, 2),
-	            new Score( new Date(), 4423, 6),
-	            new Score( new Date(), 3823, 5),
-	            new Score( new Date(), 3723, 4),
-	            new Score( new Date(), 3543, 3),
-	            new Score( new Date(), 2423, 2),
-	            new Score( new Date(), 4423, 6),
-	            new Score( new Date(), 3823, 5),
-	            new Score( new Date(), 3723, 4),
-	            new Score( new Date(), 3543, 3),
-	            new Score( new Date(), 2423, 2),
-	            new Score( new Date(), 1423, 1)
+	            new Score( new Date(), 2423, 2)
 	        );
 	
 	@SuppressWarnings("unchecked")
@@ -82,27 +69,12 @@ public class HighScore extends Pane {
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
     	Background background = new Background(backgroundImage);
     	    	
-		Label label1 = new Label("HighScore");
-		label1.setLayoutX(30);
-		label1.setLayoutY(30);
-		label1.setStyle("-fx-font-size:30px; -fx-text-fill: white;");
-		
-		Button btn1 = new Button();
-        btn1.setText("Close");
-        btn1.setLayoutX(250);
-        btn1.setLayoutY(420);
-        btn1.setPrefWidth(150);
-        btn1.setStyle("-fx-font-size:18px;");
-        btn1.setOnAction(new EventHandler<ActionEvent>() {
- 
-            public void handle(ActionEvent event) {
-            	page.setHome();
-            }
-        });
+    	MyLabel label1 = new MyLabel(200, 20, "HighScore", 60);		
+    	MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
                 
 		setBackground(background);
 		getChildren().add(label1);
 		getChildren().add(table());
-		getChildren().add(btn1);				 
+		getChildren().add(button1);				 
 	}
 }

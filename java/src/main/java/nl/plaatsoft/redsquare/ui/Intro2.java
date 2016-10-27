@@ -55,26 +55,24 @@ public class Intro2 extends Pane {
 		setOnMousePressed(new EventHandler<MouseEvent>() {
 
 	        public void handle(MouseEvent t) {
-	        	System.out.println("Home");
 				page.setHome();						
 	        }
 	    });
 		
-		        timer = new AnimationTimer() {			 
-			 	float size = (float) 0.05;
+		timer = new AnimationTimer() {			 
+		float size = (float) 0.025;
 			 	
-	            @Override
-	            public void handle(long now) {
+	    @Override
+	    public void handle(long now) {
 	            	
-	            	size+=0.05;
-	            	if (size>=1) {
-	            		size=1;
-	            	}
-	            	imageView.setScaleX(size);
-	            	imageView.setScaleY(size);
-	            }
-	        };
-		
+	       	size+=0.025;
+	       	if (size>=1) {
+	       		size=1;
+	       	}
+	       	imageView.setScaleX(size);
+	       	imageView.setScaleY(size);
+	      }
+	    };		
 	}
 	
 	void draw() {		

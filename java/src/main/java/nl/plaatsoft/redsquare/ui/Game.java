@@ -104,7 +104,6 @@ public class Game extends Pane {
 		btn1.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				System.out.println("Exit");
 				page.setHome();
 			}
 		});

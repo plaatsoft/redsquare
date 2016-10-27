@@ -1,7 +1,9 @@
 package nl.plaatsoft.redsquare.ui;
 
-import javafx.animation.AnimationTimer;
+import org.apache.log4j.Logger;
 
+import javafx.animation.AnimationTimer;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -14,10 +16,14 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import nl.plaatsoft.redsquare.tools.MyButton;
+import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.VersionCheck;
 
 public class Home extends Pane {
 
+	final static Logger log = Logger.getLogger( Home.class);
+	
 	private Square blue1;
 	private Square blue2;
 	private Square blue3;
@@ -26,6 +32,9 @@ public class Home extends Pane {
 	
 	private final String appVersion = "0.1";
 	private AnimationTimer timer;
+	private MyLabel label4;
+	private String upgrade;
+	private Task<Void> task;
 	
 	Home (final Navigator page) {
 		
@@ -44,117 +53,99 @@ public class Home extends Pane {
 		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step, width, height);
 		red = new Square("redsquare.png", 10, 10, 0, 0, 5, width, height);
 	
-		Label label1 = new Label("RedSquare v"+appVersion);
-		label1.setLayoutX(30);
-		label1.setLayoutY(30);
-		label1.setStyle("-fx-font-size:30px; -fx-text-fill: white;");
-	
-		Label label2 = new Label("22-10-2016");
-		label2.setLayoutX(30);
-		label2.setLayoutY(65);
-		label2.setStyle("-fx-font-size:24px; -fx-text-fill: white;");
-	
-		VersionCheck versionCheck = new VersionCheck();			
-		Label label3 = new Label(VersionCheck.executePost("https://service.plaatsoft.nl", "Java-RedSquare", appVersion));
-		label3.setLayoutX(30);
-		label3.setLayoutY(425);
-		label3.setStyle("-fx-font-size:18px; -fx-text-fill: #e6ed13;");
-	    		
+		MyLabel label1 = new MyLabel(30, 30, "RedSquare v"+appVersion, 30);		
+		MyLabel label2 = new MyLabel(30, 65, "27-10-2016", 24);
+		MyLabel label3 = new MyLabel(30, 90, "Beta release", 24);
+		label4 = new MyLabel(30, 420, "", 24);
+				
 		Button btn1 = new Button();
 		btn1.setText("Play");
-		btn1.setLayoutX(450);
+		btn1.setLayoutX(430);
 		btn1.setLayoutY(40);
-		btn1.setPrefWidth(150);
+		btn1.setPrefWidth(180);
 		btn1.setStyle("-fx-font-size:18px;");
 		btn1.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-				System.out.println("Play");
 				page.setGame();		
 			}
 		});
     
 		Button btn2 = new Button();
 		btn2.setText("High Score");
-		btn2.setLayoutX(450);
+		btn2.setLayoutX(430);
 		btn2.setLayoutY(90);
-		btn2.setPrefWidth(150);
+		btn2.setPrefWidth(180);
 		btn2.setStyle("-fx-font-size:18px;");
 		btn2.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-				System.out.println("High Score");
 				page.setHighScore();
 			}
 		});
 		
 		Button btn3 = new Button();
 		btn3.setText("Help");
-		btn3.setLayoutX(450);
+		btn3.setLayoutX(430);
 		btn3.setLayoutY(140);
-		btn3.setPrefWidth(150);
+		btn3.setPrefWidth(180);
 		btn3.setStyle("-fx-font-size:18px;");
 		btn3.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				System.out.println("Help");
 				page.setHelp();
 			}
 		});
 		
 		Button btn4 = new Button();
 		btn4.setText("Credits");
-		btn4.setLayoutX(450);
+		btn4.setLayoutX(430);
 		btn4.setLayoutY(190);
-		btn4.setPrefWidth(150);
+		btn4.setPrefWidth(180);
 		btn4.setStyle("-fx-font-size:18px;");
 		btn4.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				System.out.println("Credits");
 				page.setCredits();
 			}
 		});
 		
 		Button btn5 = new Button();
 		btn5.setText("Release Notes");
-		btn5.setLayoutX(450);
+		btn5.setLayoutX(430);
 		btn5.setLayoutY(240);
-		btn5.setPrefWidth(150);
+		btn5.setPrefWidth(180);
 		btn5.setStyle("-fx-font-size:18px;");
 		btn5.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				System.out.println("Release Notes");
 				page.setReleaseNotes();
 			}
 		});
 		
 		Button btn6 = new Button();
 		btn6.setText("Donate");
-		btn6.setLayoutX(450);
+		btn6.setLayoutX(430);
 		btn6.setLayoutY(290);
-		btn6.setPrefWidth(150);
+		btn6.setPrefWidth(180);
 		btn6.setStyle("-fx-font-size:18px;");
 		btn6.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				
-				System.out.println("Donate");
 				page.setDonate();			
 			}
 		});
     
 		Button btn7 = new Button();
 		btn7.setText("Exit");
-		btn7.setLayoutX(450);
+		btn7.setLayoutX(430);
 		btn7.setLayoutY(410);
-		btn7.setPrefWidth(150);
+		btn7.setPrefWidth(180);
 		btn7.setStyle("-fx-font-size:18px;");
 		btn7.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				System.out.println("Exit");
+				log.info("exit");				
 				System.exit(0);
 			}
 		});
@@ -167,7 +158,8 @@ public class Home extends Pane {
 		getChildren().add(red);    
 		getChildren().add(label1);
 		getChildren().add(label2);
-		getChildren().add(label3);    	
+		getChildren().add(label3);
+		getChildren().add(label4);    	
 		getChildren().add(btn1);
 		getChildren().add(btn2);
 		getChildren().add(btn3);
@@ -185,11 +177,20 @@ public class Home extends Pane {
 	           	blue3.move();
 	           	blue4.move();
 	           	red.move();
-	       }
+	            label4.setText(upgrade);
+	       	}
 	    };
+			    
+	    task = new Task<Void>() {
+	        public Void call() {
+	           	 upgrade = VersionCheck.executePost("https://service.plaatsoft.nl", "Java-RedSquare", appVersion); 
+	            return null;
+	        }
+		};
     }
 	
 	void draw() {		
 		timer.start();
+		new Thread(task).start();
 	}
 }

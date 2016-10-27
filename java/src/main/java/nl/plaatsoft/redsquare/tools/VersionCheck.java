@@ -6,27 +6,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Date;
-import java.util.Iterator;
 
-import org.json.simple.JSONArray;
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 public class VersionCheck {
-
-
+	
+	final static Logger log = Logger.getLogger( VersionCheck.class);
 	
 	public static String executePost(String targetURL, String product, String version) {
 
+		log.info("Start ["+targetURL+']');
+		
+		String text="";
 		HttpURLConnection connection = null;
 		String urlParameters = "product=" + product + "&version=" + version;
 
 		try {
-
 			URL url = new URL(targetURL);
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
@@ -53,11 +50,13 @@ public class VersionCheck {
 			}
 			rd.close();
 			
-			return checkVersion(response.toString(), product, version);
+			text = checkVersion(response.toString(), product, version);			
+			log.debug("end ["+text+"]");			
+			return text;
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			log.error(e.getMessage());
+			return text;
 			
 		} finally {
 			if (connection != null) {
@@ -68,6 +67,7 @@ public class VersionCheck {
 
 	private static String checkVersion(String json, String product, String currentVersion) {
 
+		String text="";
 		try {
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(json);
@@ -77,11 +77,11 @@ public class VersionCheck {
 			float tmp = Float.parseFloat(currentVersion);
 			
 			if (newVersion>tmp) {
-				return "RedSquare v"+newVersion+" available.";
+				text = "RedSquare v"+newVersion+" available.";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage());
 		}
-		return null;
+		return text;
 	}
 }

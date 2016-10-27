@@ -8,6 +8,7 @@ public class MyLabel extends Label {
 		setText(value);
 		setLayoutX(x);
 		setLayoutY(y);
+		setWrapText(true);
 		setStyle("-fx-font-size:"+fontSize+"px; -fx-text-fill: white;");
 	}	
 }

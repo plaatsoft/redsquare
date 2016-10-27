@@ -1,5 +1,7 @@
 package nl.plaatsoft.redsquare.ui;
 
+import org.apache.log4j.Logger;
+
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -15,11 +17,14 @@ import javafx.scene.layout.Pane;
 
 public class Intro1 extends Pane {
 
+	final static Logger log = Logger.getLogger( Intro1.class);
+	
 	private ImageView imageView;
 	private AnimationTimer timer;
 	
 	Intro1(final Navigator page) {
 		
+		log.info("enter");
 		Image image1 = new Image("images/background1.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
@@ -61,25 +66,25 @@ public class Intro1 extends Pane {
 		setOnMousePressed(new EventHandler<MouseEvent>() {
 
 	        public void handle(MouseEvent t) {
-	        	System.out.println("Intro2");
 				page.setIntro2();						
 	        }
 	    });
 		
 		timer = new AnimationTimer() {			 
-		float size = (float) 0.05;
+		float size = (float) 0.025;
 			 	
 	    @Override
 	    public void handle(long now) {
 	            	
-	      	size+=0.05;
+	      	size+=0.025;
 	      	if (size>=1) {
 	       		size=1;
 	       	}
 	       	imageView.setScaleX(size);
 	       	imageView.setScaleY(size);
-	    }
+	    }	   
       };
+      log.info("leave");
 	}
 	
 	void draw() {		
