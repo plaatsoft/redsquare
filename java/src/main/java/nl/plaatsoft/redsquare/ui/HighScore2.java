@@ -1,0 +1,59 @@
+package nl.plaatsoft.redsquare.ui;
+
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
+
+import java.text.SimpleDateFormat;
+import java.util.Iterator;
+
+import nl.plaatsoft.redsquare.tools.MyButton;
+import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.Score;
+import nl.plaatsoft.redsquare.tools.ScoreGlobal;
+
+public class HighScore2 extends Pane {
+		   
+	private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
+	
+	private int y;
+	private int lines; 
+	
+	HighScore2(final Navigator page) {
+		
+		Image image1 = new Image("images/background1.png");
+    	BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
+    	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+    	Background background = new Background(backgroundImage);
+		setBackground(background);
+		
+    	MyLabel label1 = new MyLabel(0, 20, "Global High Score", 60, "white");		
+    	getChildren().add(label1);
+		                
+    	y=100;    	
+    	getChildren().add(new MyLabel(30, y, "Nr", 30, "white"));
+    	getChildren().add(new MyLabel(90, y, "Date", 30, "white"));
+		getChildren().add(new MyLabel(300, y, "Score", 30, "white"));	
+		getChildren().add(new MyLabel(400, y, "Name", 30, "white"));
+		y=y+20;
+				
+		lines=1;
+    	Iterator<Score> iter = ScoreGlobal.getScore().iterator();    	
+		while (iter.hasNext()) {
+			y=y+20;
+			
+			Score score = (Score) iter.next();	
+			getChildren().add(new MyLabel(30, y, ""+lines++, 20, "white"));					
+			getChildren().add(new MyLabel(90, y, formatter.format(score.getTimestamp()), 20, "white"));
+			getChildren().add(new MyLabel(300, y, ""+score.getScore(), 20, "white"));	
+			getChildren().add(new MyLabel(400, y, ""+score.getUser(), 20, "white"));	
+		}
+		
+		MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
+		getChildren().add(button1);	
+	}
+}

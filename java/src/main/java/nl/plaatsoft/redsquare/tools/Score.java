@@ -5,14 +5,15 @@ import java.util.Date;
 public class Score {
 	
 	private Date timestamp;
-	private Integer score;
-	private Integer level;
+	private int score;
+	private int level;
+	private String user;
 	
-	public Score(Date timestamp, Integer score, Integer level) {
-		super();
+	public Score(Date timestamp, int score, int level, String user) {
 		this.timestamp = timestamp;
 		this.score = score;
 		this.level = level;
+		this.user = user;
 	}
 	
 	public Date getTimestamp() {
@@ -23,21 +24,27 @@ public class Score {
 		this.timestamp = timestamp;
 	}
 	
-	public Integer getScore() {
+	public int getScore() {
 		return score;
 	}
 	
-	public void setScore(Integer score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 	
-	public Integer getLevel() {
+	public int getLevel() {
 		return level;
 	}
 	
-	public void setLevel(Integer level) {
+	public void setLevel(int level) {
 		this.level = level;
 	}
-	
-	
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setName(String user) {
+		this.user = user;
+	}	
 }

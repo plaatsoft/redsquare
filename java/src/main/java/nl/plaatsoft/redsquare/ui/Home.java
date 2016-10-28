@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -16,9 +15,10 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
-import nl.plaatsoft.redsquare.tools.MyButton;
+import nl.plaatsoft.redsquare.network.CloudVersion;
+import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyLabel;
-import nl.plaatsoft.redsquare.tools.VersionCheck;
+import nl.plaatsoft.redsquare.tools.Square;
 
 public class Home extends Pane {
 
@@ -29,10 +29,9 @@ public class Home extends Pane {
 	private Square blue3;
 	private Square blue4;
 	private Square red;
-	
-	private final String appVersion = "0.1";
+		
 	private AnimationTimer timer;
-	private MyLabel label4;
+	private MyLabel label3;
 	private String upgrade;
 	private Task<Void> task;
 	
@@ -44,19 +43,16 @@ public class Home extends Pane {
 		Background background = new Background(backgroundImage);
 	
 		int step = 1;
-		double width = 640;
-		double height = 480;
-		
-		blue1 = new Square("bluesquare1.png", 30, 30, 1, 1, step, width, height);
-		blue2 = new Square("bluesquare2.png", 500, 30, 1, 0, step, width, height);
-		blue3 = new Square("bluesquare3.png", 30, 400, 0, 1 ,step, width, height);
-		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step, width, height);
-		red = new Square("redsquare.png", 10, 10, 0, 0, 5, width, height);
 	
-		MyLabel label1 = new MyLabel(30, 30, "RedSquare v"+appVersion, 30);		
-		MyLabel label2 = new MyLabel(30, 65, "27-10-2016", 24);
-		MyLabel label3 = new MyLabel(30, 90, "Beta release", 24);
-		label4 = new MyLabel(30, 420, "", 24);
+		blue1 = new Square("bluesquare1.png", 30, 30, 1, 1, step);
+		blue2 = new Square("bluesquare2.png", 500, 30, 1, 0, step);
+		blue3 = new Square("bluesquare3.png", 30, 400, 0, 1 ,step);
+		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step);
+		red = new Square("redsquare.png", 10, 10, 0, 0, 2);
+	
+		MyLabel label1 = new MyLabel(30, 30, Constants.APP_NAME+" v"+Constants.APP_VERSION, 30, "white");		
+		MyLabel label2 = new MyLabel(30, 70, Constants.APP_BUILD, 20, "white");
+		label3 = new MyLabel(30, 420, "", 20, "white");
 				
 		Button btn1 = new Button();
 		btn1.setText("Play");
@@ -80,7 +76,7 @@ public class Home extends Pane {
 		btn2.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-				page.setHighScore();
+				page.setHighScore1();
 			}
 		});
 		
@@ -159,7 +155,6 @@ public class Home extends Pane {
 		getChildren().add(label1);
 		getChildren().add(label2);
 		getChildren().add(label3);
-		getChildren().add(label4);    	
 		getChildren().add(btn1);
 		getChildren().add(btn2);
 		getChildren().add(btn3);
@@ -177,13 +172,13 @@ public class Home extends Pane {
 	           	blue3.move();
 	           	blue4.move();
 	           	red.move();
-	            label4.setText(upgrade);
+	            label3.setText(upgrade);
 	       	}
 	    };
 			    
 	    task = new Task<Void>() {
 	        public Void call() {
-	           	 upgrade = VersionCheck.executePost("https://service.plaatsoft.nl", "Java-RedSquare", appVersion); 
+	           	 upgrade = CloudVersion.check(Constants.APP_WS_NAME, Constants.APP_VERSION); 
 	            return null;
 	        }
 		};

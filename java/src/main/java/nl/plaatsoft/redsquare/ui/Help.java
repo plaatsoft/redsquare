@@ -19,11 +19,23 @@ public class Help extends Pane {
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
     	Background background = new Background(backgroundImage);
     	    	
-    	MyLabel label1 = new MyLabel(260, 20, "Help", 60);		
-		MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
-                
-		setBackground(background);
-		getChildren().add(label1);
-		getChildren().add(button1);
-	}
+    	setBackground(background);
+    	
+    	int y=20;
+    	getChildren().add( new MyLabel(0, y, "Help", 60, "white"));
+    	y+=120;
+    	getChildren().add( new MyLabel(0, y, "RedSquare is an classic 2D action game.", 24, "white"));
+    	y+=30;
+    	getChildren().add( new MyLabel(0, y, "Click and hold the red square.", 24, "white"));
+    	y+=30;
+    	getChildren().add( new MyLabel(0, y, "Now move so that you neither touch the wall", 24, "white"));
+    	y+=30;    	 
+    	getChildren().add( new MyLabel(0, y, "nor get hit by any of the blue squares.", 24, "white"));
+    	y+=30;
+    	getChildren().add( new MyLabel(0, y, "If you make it to 31 seconds, you are doing", 24, "white"));
+    	y+=30;
+    	getChildren().add( new MyLabel(0, y, "brilliantly!", 24, "white"));
+    	       		
+    	getChildren().add( new MyButton(230, 420, "Close", 18, page, page.getHome()));
+   	}
 }

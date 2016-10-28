@@ -19,35 +19,28 @@ public class Donate extends Pane {
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
     	Background background = new Background(backgroundImage);
     	
-    	int y=60;
-    	MyLabel label1 = new MyLabel(230, 20, "Donate", 60);
-    	y+=60;
-    	MyLabel label2 = new MyLabel(90, y, "If you enjoy this game, please sent me a", 26);
+    	setBackground(background);
+    	
+    	int y=20;
+    	getChildren().add(new MyLabel(0, y, "Donate", 60, "white"));
+    	y+=80;
+    	getChildren().add(new MyLabel(0, y, "If you enjoy this game, please sent me a", 24, "white"));
     	y+=30;
-    	MyLabel label3 = new MyLabel(80, y, "small donation. You can make a donation", 26);
+    	getChildren().add(new MyLabel(0, y, "small donation. You can make a donation", 24, "white"));
     	y+=30;
-    	MyLabel label4 = new MyLabel(50, y, "online with your credit card, or PayPal account.", 26);
+    	getChildren().add(new MyLabel(0, y, "online with your credit card, or PayPal account.", 24, "white"));
     	y+=30;    	 
-    	MyLabel label5 = new MyLabel(50, y, "Your credit card will be processed by PayPal, a", 26);
+    	getChildren().add(new MyLabel(0, y, "Your credit card will be processed by PayPal, a", 24, "white"));
     	y+=30;
-    	MyLabel label6 = new MyLabel(70, y, "trusted name in secure online transactions.", 26);
+    	getChildren().add(new MyLabel(0, y, "trusted name in secure online transactions.", 24, "white"));
     	y+=60;
-    	MyLabel label7 = new MyLabel(80, y, "Please visit http://www.plaatsoft.nl/donate", 26);
+    	getChildren().add(new MyLabel(0, y, "Please visit www.plaatsoft.nl", 24, "white"));
     	y+=30;
-    	MyLabel label8 = new MyLabel(30, y, "Click on the donate link and follow the instructions", 26);
+    	getChildren().add(new MyLabel(0, y, "Click on the donate link and follow the instructions", 24, "white"));    	
+    	y+=60;
+    	getChildren().add(new MyLabel(0, y, "Many thanks for your support!", 24, "white"));
     	       		
-    	MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
-                
-		setBackground(background);
-		getChildren().add(label1);
-		getChildren().add(label2);
-		getChildren().add(label3);
-		getChildren().add(label4);
-		getChildren().add(label5);
-		getChildren().add(label6);
-		getChildren().add(label7);
-		getChildren().add(label8);		
-		getChildren().add(button1);
+    	getChildren().add(new MyButton(230, 420, "Close", 18, page, page.getHome()));		
 	}
 	
 }

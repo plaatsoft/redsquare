@@ -1,8 +1,5 @@
 package nl.plaatsoft.redsquare.ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -16,12 +13,13 @@ import nl.plaatsoft.redsquare.tools.MyLabel;
 public class ReleaseNotes extends Pane {
 
 	String notes="27-10-2016 (Version 0.1)\n"
+			+ "- Added in memory highscore.\n"
 			+ "- Added new version check thread to home page.\n"
 			+ "- Added page nagivator so pages are loaded just in time.\n"
-			+ "- Added basic game page.\n"
+			+ "- Added game amd highscore page.\n"
 			+ "- Added Intro1 and Intro2 pages with simple animation.\n"
-			+ "- Added Donate, Credit, Help, Release Notes page.\n"
-			+ "- My first JavaFX game!.\n";
+			+ "- Added Help, Credits, Release Notes and Donate page.\n"
+			+ "- My first JavaFX game!";
 	
 	ReleaseNotes(final Navigator page) {
 		
@@ -30,8 +28,8 @@ public class ReleaseNotes extends Pane {
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
     	Background background = new Background(backgroundImage);
     	    	   	
-    	MyLabel label1 = new MyLabel(130, 30, "Release Notes", 60);
-    	MyLabel label2 = new MyLabel(30, 120, notes, 18);    	
+    	MyLabel label1 = new MyLabel(0, 20, "Release Notes", 60, "white");
+    	MyLabel label2 = new MyLabel(30, 120, notes, 20, "white");    	
     	MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
                       
 		setBackground(background);
