@@ -126,8 +126,11 @@ public class Game extends Pane {
   	   score = new Score(starttime, points, level, "");
   	   int ranking = ScoreLocal.addScore(score);  	   
   	   
-  	   if (ranking<6) {
+  	   if (ranking<16) {
   		   getChildren().add(new MyLabel(0, y, "You reached the "+ranking+"th place in the highscore!",28, "black"));
+  	   }
+  	   
+  	   if (ranking<6) {
   		   y=y+40;
   		   for (int i=0; i<(6-ranking); i++) {	
   			   int x = (Constants.WIDTH/2)-((6-ranking)*64)/2;

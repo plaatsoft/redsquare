@@ -38,10 +38,10 @@ public class HighScore1 extends Pane {
     	Background background = new Background(backgroundImage);
 		setBackground(background);
 		
-    	MyLabel label1 = new MyLabel(0, 20, "Local High Score", 60, "white");		
-    	getChildren().add(label1);
+		y=0;    
+		getChildren().add (new MyLabel(0, y, "Local High Score", 50, "white"));		
 		                
-    	y=100;    	
+    	y+=60;    	
     	getChildren().add(new MyLabel(30, y, "Nr", 30, "white"));
     	getChildren().add(new MyLabel(90, y, "Date", 30, "white"));
 		getChildren().add(new MyLabel(300, y, "Score", 30, "white"));	
@@ -52,8 +52,7 @@ public class HighScore1 extends Pane {
 		lines=1;
     	Iterator<Score> iter = ScoreLocal.getScore().iterator();    	
 		while (iter.hasNext()) {
-			y=y+20;
-			
+			y+=20;
 			Score score = (Score) iter.next();	
 			getChildren().add(new MyLabel(30, y, ""+lines, 20, "white"));					
 			getChildren().add(new MyLabel(90, y, formatter.format(score.getTimestamp()), 20, "white"));
@@ -66,7 +65,7 @@ public class HighScore1 extends Pane {
 				}
 			}
 			
-			if (++lines>12) {
+			if (++lines>15) {
 				break;
 			}
 		}

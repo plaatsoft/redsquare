@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import nl.plaatsoft.redsquare.tools.Constants;
 import javafx.scene.image.Image;
 //import javafx.scene.media.Media;
 //import javafx.scene.media.MediaPlayer;
@@ -19,7 +20,7 @@ public class Main extends Application {
     	
     	Navigator page = new Navigator();
     	    
-        primaryStage.setTitle("RedSquare");
+        primaryStage.setTitle(Constants.APP_NAME+" v"+Constants.APP_VERSION);
         primaryStage.setScene(page.getScene());
         primaryStage.sizeToScene();
         primaryStage.setResizable(false);
