@@ -13,9 +13,7 @@ public class CloudVersion {
 
 		String returnValue="";		
 		String parameters = "action=version&product=" +  product + "&version=" + version;
-		
-		log.info("enter ["+parameters+"]");
-				
+						
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
 		
 		try {
@@ -28,7 +26,7 @@ public class CloudVersion {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		log.info("leave ["+returnValue+"]");
+
 		return returnValue;			
 	}
 }

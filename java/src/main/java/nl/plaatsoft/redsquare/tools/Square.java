@@ -44,7 +44,7 @@ public class Square extends ImageView{
 	private void collisionSound() {
 		
 		if (sound) {
-			String path = Square.class.getResource("/music/effect1.wav").toString();
+			String path = getClass().getResource("/music/effect1.mp3").toExternalForm();
 			Media media = new Media(path);
 			MediaPlayer mp = new MediaPlayer(media);
 			mp.play();

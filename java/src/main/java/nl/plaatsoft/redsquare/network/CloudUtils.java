@@ -9,13 +9,47 @@ import java.net.URL;
 
 import org.apache.log4j.Logger;
 
+import nl.plaatsoft.redsquare.tools.Constants;
+
 public class CloudUtils {
 
 	final static Logger log = Logger.getLogger( CloudUtils.class);
 	
+	public static String executeGet(String targetURL) {
+
+		HttpURLConnection con=null;
+		
+		try {
+			URL obj = new URL(targetURL);
+			con = (HttpURLConnection) obj.openConnection();
+			
+			con.setRequestMethod("GET");
+			con.setRequestProperty("User-Agent", Constants.APP_NAME);
+
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+			
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+
+			return response.toString();
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			return null;
+			
+		} finally {
+			if (con != null) {
+				con.disconnect();
+			}
+		}		
+	}
+	
 	public static String executePost(String targetURL, String urlParameters) {
 
-		log.info("Start ["+targetURL+']');
+		log.info(targetURL+' '+urlParameters);
 		
 		String text="";
 		HttpURLConnection connection = null;
@@ -47,7 +81,7 @@ public class CloudUtils {
 			}
 			rd.close();
 			
-			log.info("["+response.toString()+"]");			
+			log.info(response.toString());			
 			return response.toString();
 			
 		} catch (Exception e) {

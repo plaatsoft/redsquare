@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
 import nl.plaatsoft.redsquare.tools.MyButton;
+import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.Score;
 import nl.plaatsoft.redsquare.tools.ScoreGlobal;
@@ -50,7 +51,11 @@ public class HighScore2 extends Pane {
 			getChildren().add(new MyLabel(30, y, ""+lines, 20, "white"));					
 			getChildren().add(new MyLabel(90, y, formatter.format(score.getTimestamp()), 20, "white"));
 			getChildren().add(new MyLabel(300, y, ""+score.getScore(), 20, "white"));	
-			getChildren().add(new MyLabel(400, y, ""+score.getUser(), 20, "white"));
+			
+			if (score.getCountry().length()>0) {
+				getChildren().add(new MyImageView(400,y+4,"images/flags/"+score.getCountry()+".png", 0.7));
+			}
+			getChildren().add(new MyLabel(430, y, ""+score.getUser(), 20, "white"));
 			
 			if (++lines>15) {
 				break;

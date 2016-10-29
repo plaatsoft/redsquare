@@ -24,6 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import nl.plaatsoft.redsquare.network.CloudGeoCode;
 import nl.plaatsoft.redsquare.network.CloudScore;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
@@ -108,7 +109,7 @@ public class Game extends Pane {
 		
 	private void gameOverSound() {
 		
-		String path = Game.class.getResource("/music/effect2.wav").toString();
+		String path = getClass().getResource("/music/effect2.mp3").toExternalForm();
 		Media media = new Media(path);
 		MediaPlayer mp = new MediaPlayer(media);
 		mp.play();
@@ -134,7 +135,7 @@ public class Game extends Pane {
   	   getChildren().add(new MyLabel(0, y, label1.getText(),20, "black"));
   	   y=y+30;
   	  	
-  	   score = new Score(starttime, points, level, "");
+  	   score = new Score(starttime, points, level, "", CloudGeoCode.getCountry(), CloudGeoCode.getCity());
   	   int ranking = ScoreLocal.addScore(score);  	   
   	   
   	   if (ranking<16) {
