@@ -9,9 +9,6 @@ import java.util.TimeZone;
 import org.apache.log4j.Logger;
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -27,7 +24,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 import nl.plaatsoft.redsquare.network.CloudScore;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
@@ -112,7 +108,7 @@ public class Game extends Pane {
 		
 	private void gameOverSound() {
 		
-		String path = Main.class.getResource("/music/effect2.wav").toString();
+		String path = Game.class.getResource("/music/effect2.wav").toString();
 		Media media = new Media(path);
 		MediaPlayer mp = new MediaPlayer(media);
 		mp.play();

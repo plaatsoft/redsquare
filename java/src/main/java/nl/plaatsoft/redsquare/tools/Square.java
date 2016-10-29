@@ -4,7 +4,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import nl.plaatsoft.redsquare.ui.Main;
 
 public class Square extends ImageView{
 	
@@ -45,7 +44,7 @@ public class Square extends ImageView{
 	private void collisionSound() {
 		
 		if (sound) {
-			String path = Main.class.getResource("/music/effect1.wav").toString();
+			String path = Square.class.getResource("/music/effect1.wav").toString();
 			Media media = new Media(path);
 			MediaPlayer mp = new MediaPlayer(media);
 			mp.play();
