@@ -9,6 +9,9 @@ import java.util.TimeZone;
 import org.apache.log4j.Logger;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -21,7 +24,10 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import nl.plaatsoft.redsquare.network.CloudScore;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
@@ -103,12 +109,21 @@ public class Game extends Pane {
 	    }
 		return false;
 	}
-	
+		
+	private void gameOverSound() {
+		
+		String path = Main.class.getResource("/music/effect2.wav").toString();
+		Media media = new Media(path);
+		MediaPlayer mp = new MediaPlayer(media);
+		mp.play();
+	}
+		
 	private void gameOver(final Navigator page) {
 		
  	   go = false; 
  	   
  	   timer1.stop();
+ 	   gameOverSound();
  	   
 	   getChildren().add(new MyButton(230, 380, "Exit", 18, page, page.getHome()));
   	   int y=50;
@@ -122,7 +137,7 @@ public class Game extends Pane {
   	   y=y+35;
   	   getChildren().add(new MyLabel(0, y, label1.getText(),20, "black"));
   	   y=y+30;
-  	 
+  	  	
   	   score = new Score(starttime, points, level, "");
   	   int ranking = ScoreLocal.addScore(score);  	   
   	   
@@ -160,11 +175,11 @@ public class Game extends Pane {
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		Background background = new Background(backgroundImage);
 		
-		blue1 = new Square("bluesquare1.png", 0, 0, 1, 1, 1);
-		blue2 = new Square("bluesquare2.png", 0, 0, 1, 0, 1);
-		blue3 = new Square("bluesquare3.png", 0, 0, 0, 1, 1);
-		blue4 = new Square("bluesquare4.png", 0, 0, 0, 0, 1);
-		red = new Square("redsquare.png", 300, 300, 0, 0, 0);		
+		blue1 = new Square("bluesquare1.png", 1, 1, 1, 1, 1, true);
+		blue2 = new Square("bluesquare2.png", 1, 1, 1, 0, 1, true);
+		blue3 = new Square("bluesquare3.png", 1, 1, 0, 1, 1, true);
+		blue4 = new Square("bluesquare4.png", 1, 1, 0, 0, 1, true);
+		red = new Square("redsquare.png", 300, 300, 0, 0, 0, false);		
     			
 		red.setOnMousePressed(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent me) {
@@ -268,10 +283,10 @@ public class Game extends Pane {
 		level = 1;
 		go = true; 
 		
-		blue1.setPosition(0, 0);
-		blue2.setPosition(Constants.WIDTH-blue2.getWidth(), 0);
-		blue3.setPosition(0, Constants.HEIGHT-blue3.getHeight());
-		blue4.setPosition(Constants.WIDTH-blue4.getWidth(), Constants.HEIGHT-blue4.getHeight());
+		blue1.setPosition(1, 1);
+		blue2.setPosition(Constants.WIDTH-blue2.getWidth()-1, 1);
+		blue3.setPosition(1, Constants.HEIGHT-blue3.getHeight()-1);
+		blue4.setPosition(Constants.WIDTH-blue4.getWidth()-1, Constants.HEIGHT-blue4.getHeight()-1);
 		red.setPosition((Constants.WIDTH/2)-(red.getWidth()/2),(Constants.HEIGHT/2)-(red.getHeight()/2));
 		
 		blue1.setStep(level);

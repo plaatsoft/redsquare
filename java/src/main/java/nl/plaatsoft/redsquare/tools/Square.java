@@ -2,6 +2,9 @@ package nl.plaatsoft.redsquare.tools;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import nl.plaatsoft.redsquare.ui.Main;
 
 public class Square extends ImageView{
 	
@@ -12,6 +15,7 @@ public class Square extends ImageView{
 	private double width;
 	private double height;
 	private int step;
+	private boolean sound;
 	
 	public void setPosition(double x, double y) {
 		
@@ -22,7 +26,7 @@ public class Square extends ImageView{
 		setLayoutY(y);
 	}
 
-	public Square(String filename,int x, int y, int dirHor, int dirVer, int step) {
+	public Square(String filename,int x, int y, int dirHor, int dirVer, int step, boolean sound) {
 
 		setImage(new Image("images/"+filename));
 		this.x = x;
@@ -32,37 +36,52 @@ public class Square extends ImageView{
 		this.directionHorizontal = dirHor;
 		this.directionVertical = dirVer;
 		this.step = step;
+		this.sound = sound;
 		
 		setLayoutX(x);
 		setLayoutY(y);
 	}
 		
+	private void collisionSound() {
+		
+		if (sound) {
+			String path = Main.class.getResource("/music/effect1.wav").toString();
+			Media media = new Media(path);
+			MediaPlayer mp = new MediaPlayer(media);
+			mp.play();
+		}
+	}
+	
 	public void move() {
 			
 		if (directionHorizontal==1) {
-			x = x + step;			
+			x += step;			
 			if (x>(Constants.WIDTH-width)) {
 				directionHorizontal=0;
 				x = Constants.WIDTH - width;
+				collisionSound();
 			}
 		} else {
-			x = x - step;
+			x -= step;
 			if (x<=0) {
 				directionHorizontal=1;
 				x=0;
+				collisionSound();
 			}
 		}
 		
 		if (directionVertical==1) {
-			y = y + step;
+			y += step;
 			if (y>(Constants.HEIGHT-height)) {
 				directionVertical=0;
 				y=Constants.HEIGHT - height;
+				collisionSound();
 			}
 		} else {
-			y = y - step;
+			y -= step;
 			if (y<=0) {
 				directionVertical=1;
+				collisionSound();
 				y=0;
 			}
 		}

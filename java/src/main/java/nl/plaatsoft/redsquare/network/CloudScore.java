@@ -15,7 +15,7 @@ import nl.plaatsoft.redsquare.tools.ScoreLocal;
 
 public class CloudScore {
 
-final static Logger log = Logger.getLogger( CloudScore.class);
+	final static Logger log = Logger.getLogger( CloudScore.class);
 	
 	public static void set(String product, String version, Score score) {
 									

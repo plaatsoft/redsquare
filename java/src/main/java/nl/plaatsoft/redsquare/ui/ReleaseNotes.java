@@ -12,14 +12,15 @@ import nl.plaatsoft.redsquare.tools.MyLabel;
 
 public class ReleaseNotes extends Pane {
 
-	String notes="27-10-2016 (Version 0.1)\n"
-			+ "- Added in memory highscore.\n"
+	String notes="29-10-2016 (Version 0.1)\n"
+			+ "- Added basic sound effects.\n"
+			+ "- Added nice background music.\n"
+			+ "- Added webservice to store local and global highscore.\n"
 			+ "- Added new version check thread to home page.\n"
-			+ "- Added page nagivator so pages are loaded just in time.\n"
-			+ "- Added game amd highscore page.\n"
-			+ "- Added Intro1 and Intro2 pages with simple animation.\n"
-			+ "- Added Help, Credits, Release Notes and Donate page.\n"
-			+ "- My first JavaFX game!";
+			+ "- Added page navigator so pages are loaded just in time.\n"
+			+ "- Added game page with special effects.\n"
+			+ "- Added two intro pages with basic animation.\n"
+			+ "- Added help, credits, release notes and donate page.\n";
 	
 	ReleaseNotes(final Navigator page) {
 		

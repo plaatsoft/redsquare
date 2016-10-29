@@ -3,6 +3,7 @@ package nl.plaatsoft.redsquare.ui;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -42,6 +43,13 @@ public class Intro2 extends Pane {
 				page.setHome();						
 	        }
 	    });
+		
+		setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+		    public void handle(KeyEvent kEvent) {
+		    	page.setHome();			
+		    }
+		});
 		
 		timer = new AnimationTimer() {			 
 		float size = (float) 0.025;

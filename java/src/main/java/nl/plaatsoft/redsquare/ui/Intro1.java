@@ -1,9 +1,12 @@
 package nl.plaatsoft.redsquare.ui;
 
+import org.apache.log4j.Logger;
+
 import javafx.animation.AnimationTimer;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -18,6 +21,8 @@ import nl.plaatsoft.redsquare.tools.MyLabel;
 
 public class Intro1 extends Pane {
 
+	final static Logger log = Logger.getLogger( Intro1.class);
+	
 	private MyImageView imageView1;
 	private AnimationTimer timer;
 	private Task<Void> task;
@@ -31,7 +36,7 @@ public class Intro1 extends Pane {
 		
 		MyLabel label1 = new MyLabel(0,30,"Created by PlaatSoft",26, "white");
 		MyLabel label2 = new MyLabel(0,70,"www.plaatsoft.nl",26, "white");
-		imageView1 = new MyImageView(80,150, "images/logo.png",1);				
+		imageView1 = new MyImageView(80,150, "images/logo1.png",1);				
 		MyLabel label3 = new MyLabel(0,410,"This is source is open source and may be copied, distributed or modified",16, "white");
 		MyLabel label4 = new MyLabel(0,430,"under the terms of the GNU General Public License (GPL) version 3",16, "white");
 									
@@ -43,11 +48,17 @@ public class Intro1 extends Pane {
 		getChildren().add(label4);
 		
 		setOnMousePressed(new EventHandler<MouseEvent>() {
-
 	        public void handle(MouseEvent t) {
 				page.setIntro2();						
 	        }
 	    });
+		
+		setOnKeyPressed(new EventHandler<KeyEvent>() {
+		    public void handle(KeyEvent ke) {
+		    	page.setIntro2();
+		    }
+		});
+		
 		
 		timer = new AnimationTimer() {			 
 			float size = (float) 0.025;

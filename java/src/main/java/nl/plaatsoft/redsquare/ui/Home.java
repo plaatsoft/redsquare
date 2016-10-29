@@ -44,11 +44,11 @@ public class Home extends Pane {
 	
 		int step = 1;
 	
-		blue1 = new Square("bluesquare1.png", 30, 30, 1, 1, step);
-		blue2 = new Square("bluesquare2.png", 500, 30, 1, 0, step);
-		blue3 = new Square("bluesquare3.png", 30, 400, 0, 1 ,step);
-		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step);
-		red = new Square("redsquare.png", 10, 10, 0, 0, 2);
+		blue1 = new Square("bluesquare1.png", 30, 30, 1, 1, step, false);
+		blue2 = new Square("bluesquare2.png", 500, 30, 1, 0, step, false);
+		blue3 = new Square("bluesquare3.png", 30, 400, 0, 1 ,step, false);
+		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step, false);
+		red = new Square("redsquare.png", 10, 10, 0, 0, 2, false);
 	
 		MyLabel label1 = new MyLabel(30, 30, Constants.APP_NAME+" v"+Constants.APP_VERSION, 30, "white");		
 		MyLabel label2 = new MyLabel(30, 70, Constants.APP_BUILD, 20, "white");
