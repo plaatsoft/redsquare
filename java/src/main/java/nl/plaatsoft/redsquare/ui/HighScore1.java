@@ -1,6 +1,5 @@
 package nl.plaatsoft.redsquare.ui;
 
-import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -11,8 +10,6 @@ import javafx.scene.layout.BackgroundSize;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
-import nl.plaatsoft.redsquare.network.CloudScore;
-import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
@@ -26,7 +23,6 @@ public class HighScore1 extends MyPanel {
 	
 	private int y;
 	private int lines; 
-	private Task<Void> task;
 		
 	public void draw() {	
 		
@@ -68,16 +64,6 @@ public class HighScore1 extends MyPanel {
 			}
 		}
 		
-		getChildren().add( new MyButton(230, 420, "Next", 18, Navigator.GLOBAL_HIGHSCORE));		
-		
-		
-		task = new Task<Void>() {
-	        public Void call() {
-	           	CloudScore.getGlobal(Constants.APP_WS_NAME, Constants.APP_VERSION); 
-	            return null;
-	        }
-		};
-		
-		new Thread(task).start();
+		getChildren().add( new MyButton(230, 420, "Next", 18, Navigator.GLOBAL_HIGHSCORE));				
 	}
 }

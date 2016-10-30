@@ -74,8 +74,6 @@ public class CloudScore {
 		parameters += "product=" + Constants.APP_WS_NAME + "&";
 		parameters += "user="+System.getProperty("user.name") + "&";
 		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
-
-		log.info("enter ["+parameters+"]");
 		
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
 						
