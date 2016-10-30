@@ -47,7 +47,7 @@ public class HighScore2 extends MyPanel {
 			
 			Score score = (Score) iter.next();	
 			getChildren().add(new MyLabel(30, y, ""+lines, 20, "white"));					
-			getChildren().add(new MyLabel(90, y, formatter.format(score.getTimestamp()), 20, "white"));
+			getChildren().add(new MyLabel(80, y, formatter.format(score.getTimestamp()), 20, "white"));
 			getChildren().add(new MyLabel(300, y, ""+score.getScore(), 20, "white"));	
 			
 			if (score.getCountry().length()>0) {
@@ -80,7 +80,7 @@ public class HighScore2 extends MyPanel {
 				
 		y+=60;    	
     	getChildren().add(new MyLabel(30, y, "Nr", 30, "white"));
-    	getChildren().add(new MyLabel(90, y, "Date", 30, "white"));
+    	getChildren().add(new MyLabel(80, y, "Date", 30, "white"));
 		getChildren().add(new MyLabel(300, y, "Score", 30, "white"));	
 		getChildren().add(new MyLabel(400, y, "Name", 30, "white"));
 				

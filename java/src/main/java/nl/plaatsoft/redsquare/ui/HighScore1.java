@@ -37,7 +37,7 @@ public class HighScore1 extends MyPanel {
 		                
     	y+=60;    	
     	getChildren().add(new MyLabel(30, y, "Nr", 30, "white"));
-    	getChildren().add(new MyLabel(90, y, "Date", 30, "white"));
+    	getChildren().add(new MyLabel(80, y, "Date", 30, "white"));
 		getChildren().add(new MyLabel(300, y, "Score", 30, "white"));	
 		getChildren().add(new MyLabel(400, y, "Level", 30, "white"));
 		getChildren().add(new MyLabel(490, y, "Award", 30, "white"));	
@@ -49,7 +49,7 @@ public class HighScore1 extends MyPanel {
 			y+=20;
 			Score score = (Score) iter.next();	
 			getChildren().add(new MyLabel(30, y, ""+lines, 20, "white"));					
-			getChildren().add(new MyLabel(90, y, formatter.format(score.getTimestamp()), 20, "white"));
+			getChildren().add(new MyLabel(80, y, formatter.format(score.getTimestamp()), 20, "white"));
 			getChildren().add(new MyLabel(300, y, ""+score.getScore(), 20, "white"));	
 			getChildren().add(new MyLabel(400, y, ""+score.getLevel(), 20, "white"));	
 			
