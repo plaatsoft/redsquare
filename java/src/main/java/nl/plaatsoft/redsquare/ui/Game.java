@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -43,7 +44,7 @@ public class Game extends MyPanel {
 	private Square blue3;
 	private Square blue4;
 	private Square red;	
-	
+		
 	private MyLabel label1;
 	private MyLabel label2;
 	private MyLabel label3;
@@ -58,28 +59,29 @@ public class Game extends MyPanel {
 	private Date leveltime; 
 	private double offsetX=0;
 	private double offsetY=0;
+	private int borderSize=Constants.BORDER_SIZE;
 	
 	private Task<Void> task1;
 	private Score score;
 
 	private boolean collisionDetection() {
 		
-	    if (red.getLayoutX()<Constants.BORDER) {
+	    if (red.getLayoutX()<borderSize) {
 	       log.info("left wall collision");
 	       return true;
 	    }
 
-	    if ((red.getLayoutX()+red.getWidth())>(Constants.WIDTH-Constants.BORDER)) {
+	    if ((red.getLayoutX()+red.getWidth())>(Constants.WIDTH-borderSize)) {
 	    	 log.info("right wall collision");
 	       return true;
 	    }
 
-	    if (red.getLayoutY()<Constants.BORDER) {
+	    if (red.getLayoutY()<borderSize) {
 	    	 log.info("top wall collision");
 	       return true;
 	    }
 
-	    if ((red.getLayoutY()+red.getHeight())>(Constants.HEIGHT-Constants.BORDER)) {
+	    if ((red.getLayoutY()+red.getHeight())>(Constants.HEIGHT-borderSize)) {
 	    	 log.info("bottom wall collision");
 	       return true;
 	    }
@@ -177,6 +179,7 @@ public class Game extends MyPanel {
 		    	if (go) { 
 		    		offsetX = me.getSceneX() - red.getPosX();
 		    		offsetY = me.getSceneY() - red.getPosY();
+		    		getScene().setCursor(Cursor.HAND);
 		    	}
 		    }
 		});
@@ -184,19 +187,25 @@ public class Game extends MyPanel {
 		red.setOnMouseDragged(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent me) {		    	
 		    	if (go) { 
-		    		red.setPosition(me.getSceneX()-offsetX, me.getSceneY()-offsetY);
+		    		red.setPosition(me.getSceneX()-offsetX, me.getSceneY()-offsetY);		    		
 		    	}
 		    }
 		});
 		
-		Canvas canvas = new Canvas(Constants.WIDTH-(2*Constants.BORDER), Constants.HEIGHT-(2*Constants.BORDER));
+		red.setOnMouseReleased(new EventHandler<MouseEvent>() {
+		    public void handle(MouseEvent me) {		    	
+  		   		 getScene().setCursor(Cursor.DEFAULT);
+		    }
+		});
+		
+		Canvas canvas = new Canvas(Constants.WIDTH-(2*Constants.BORDER_SIZE), Constants.HEIGHT-(2*Constants.BORDER_SIZE));
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 	    gc.setGlobalAlpha(0.4);
 	    gc.setFill(Color.WHITE);
 	    gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());    
-        canvas.setLayoutX(Constants.BORDER);
-        canvas.setLayoutY(Constants.BORDER);
-	            	       	   
+        canvas.setLayoutX(Constants.BORDER_SIZE);
+        canvas.setLayoutY(Constants.BORDER_SIZE);
+        	            	       	   
         label1 = new MyLabel(10, 5 ,""+points,18, "white");
         label2 = new MyLabel(280, 5, "00:00:00"+points, 18, "white");
         label3 = new MyLabel(620, 5, ""+level, 18, "white");
@@ -216,7 +225,8 @@ public class Game extends MyPanel {
 			 
 	       @Override
 	       public void handle(long now) {
-	    	   	    	   
+	    	   	    	     	   
+	    	   // Move blue squares
 	    	   blue1.move();
 	           blue2.move();
 	           blue3.move();

@@ -6,7 +6,6 @@ import javafx.animation.AnimationTimer;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;

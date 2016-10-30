@@ -9,7 +9,7 @@ public class Constants {
 	public final static String APP_WS_NAME = "Java-RedSquare";
 	public final static String APP_WS_URL = "https://service.plaatsoft.nl";
 	
-	public final static int BORDER = 35;
+	public final static int BORDER_SIZE = 35;
 	public final static int WIDTH = 640;
 	public final static int HEIGHT = 480;		
 }
