@@ -13,13 +13,14 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
+
 import nl.plaatsoft.redsquare.network.CloudScore;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.MyPanel;
 
-public class Intro1 extends Pane {
+public class Intro1 extends MyPanel {
 
 	final static Logger log = Logger.getLogger( Intro1.class);
 	
@@ -27,7 +28,7 @@ public class Intro1 extends Pane {
 	private AnimationTimer timer;
 	private Task<Void> task;
 	
-	Intro1(final Navigator page) {
+	public Intro1() {
 	
 		Image image1 = new Image("images/background1.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -49,17 +50,19 @@ public class Intro1 extends Pane {
 		
 		setOnMousePressed(new EventHandler<MouseEvent>() {
 	        public void handle(MouseEvent t) {
-				page.setIntro2();						
+	        	Navigator.go(Navigator.INTRO2);			
 	        }
 	    });
 		
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 		    public void handle(KeyEvent ke) {
-		    	page.setIntro2();
+		    	Navigator.go(Navigator.INTRO2);			
 		    }
-		});
-		
-		
+		});		
+	}
+	
+	public void draw() {		
+				
 		timer = new AnimationTimer() {			 
 			float size = (float) 0.025;
 			 	
@@ -81,9 +84,7 @@ public class Intro1 extends Pane {
 	            return null;
 	        }
 		};
-	}
-	
-	void draw() {		
+		
 		timer.start();
 		new Thread(task).start();
 	}

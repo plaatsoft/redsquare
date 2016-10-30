@@ -1,150 +1,111 @@
 package nl.plaatsoft.redsquare.ui;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.ScoreGlobal;
 
 public class Navigator {
 		
-	private Intro1 intro1;
-	private Intro2 intro2;
-	private Home home;
-	private Game game;	
-	private Donate donate;
-	private HighScore1 highScore1;
-	private HighScore2 highScore2;
-	private Credits credits;	
-	private ReleaseNotes releaseNotes;
-	private Help help;		
-	private Scene scene;	
-				
-	Navigator() {		
-		setIntro1();
-		intro1.draw();
-	}
-	
-	public void setHome() {	
-		if (home==null) {
-			home = new Home(this);
-		}
-		scene.setRoot(home);
-		home.draw();
-	}
-	
-	public void setGame() {
-		/* Small hack to update content always */
-		game = new Game(this);
-		scene.setRoot(game);
-		game.draw();
-	}
-	
-	public void setDonate() {
-		if (donate==null) {
-			donate = new Donate(this);
-		}
-		scene.setRoot(donate);
-	}
-	
-	public void setHighScore1() {
-		ScoreGlobal.clear();
-		
-		/* Small hack to update content always */
-		highScore1 = new HighScore1(this);
-		highScore1.draw();
-		scene.setRoot(highScore1);
-	}
-	
-	public void setHighScore2() {
-		/* Small hack to update content always */
-		highScore2 = new HighScore2(this);
-		scene.setRoot(highScore2);
-	}
-	
-	public void setCredits() {
-		if (credits==null) {
-			credits = new Credits(this);
-		}
-		scene.setRoot(credits);
-	}
-	
-	public void setReleaseNotes() {
-		if (releaseNotes==null) {
-			releaseNotes = new ReleaseNotes(this);
-		}
-		scene.setRoot(releaseNotes);
-	}
-	
-	public void setHelp() {
-		if (help==null) {
-			help = new Help(this);
-		}
-		scene.setRoot(help);
-	}
-	
-	public void setIntro1() {
-		if (intro1==null) {
-			intro1 = new Intro1(this);
-		}
-		scene = new Scene(intro1, Constants.WIDTH, Constants.HEIGHT);
-		intro1.draw();
-	}
-	
-	public void setIntro2() {
-		if (intro2==null) {
-			intro2 = new Intro2(this);
-		}
-		scene.setRoot(intro2);
-		intro2.draw();
-	}
-	
-	public void setScene(Pane object) {
-		scene.setRoot(object);
-	}
-		
-	/* ---------------------------------- */
-
-	public Scene getScene() {
+	private static Intro1 intro1;
+	private static Intro2 intro2;
+	private static Home home;
+	private static Game game;	
+	private static Donate donate;
+	private static HighScore1 highScore1;
+	private static HighScore2 highScore2;
+	private static Credits credits;	
+	private static ReleaseNotes releaseNotes;
+	private static Help help;		
+	private static Scene scene;	
+			
+	public static final int INTRO1 = 1;
+	public static final int INTRO2 = 2;
+	public static final int HOME = 3;
+	public static final int GAME = 4;
+	public static final int DONATE = 5;
+	public static final int LOCAL_HIGHSCORE = 6;
+	public static final int GLOBAL_HIGHSCORE = 7;
+	public static final int CREDITS = 8;
+	public static final int RELEASE_NOTES = 9;
+	public static final int HELP = 10;
+	public static final int EXIT = 11;
+			
+	public static Scene getScene() {
 		return scene;
 	}
 	
-	public Home getHome() {
-		return home;
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public Donate getDonate() {
-		return donate;
-	}
-
-	public HighScore1 getHighScore1() {
-		return highScore1;
-	}
-	
-	public HighScore2 getHighScore2() {
-		return highScore2;
-	}
-
-	public Credits getCredits() {
-		return credits;
-	}
-
-	public ReleaseNotes getReleaseNotes() {
-		return releaseNotes;
-	}
-
-	public Help getHelp() {
-		return help;
-	}
-
-	public Intro1 getIntro1() {
-		return intro1;
-	}
-	
-	public Intro2 getIntro2() {
-		return intro2;
+	public static void go(int page) {
+				
+		switch (page ) {
+		
+			case INTRO1:
+				intro1 = new Intro1();
+				intro1.draw();
+				scene = new Scene(intro1, Constants.WIDTH, Constants.HEIGHT);				
+				break;
+			
+			case INTRO2:
+				intro2 = new Intro2();				
+				intro2.draw();
+				scene.setRoot(intro2);				
+				break;		
+				
+			case HOME:
+				if (home==null) {
+					home = new Home();
+				}
+				home.draw();
+				scene.setRoot(home);				
+				break;		
+		
+			case GAME:
+				game = new Game();
+				game.draw();		
+				scene.setRoot(game);					
+				break;		
+				
+			case LOCAL_HIGHSCORE:
+				ScoreGlobal.clear();
+				
+				highScore1 = new HighScore1();
+				highScore1.draw();
+				
+				scene.setRoot(highScore1);
+				break;
+				
+			case GLOBAL_HIGHSCORE:
+				highScore2 = new HighScore2();
+				scene.setRoot(highScore2);
+				highScore2.draw();
+				break;		
+				
+			case DONATE:
+				donate = new Donate();
+				scene.setRoot(donate);
+				donate.draw();
+				break;
+								
+			case CREDITS:
+				credits = new Credits();
+				credits.draw();
+				scene.setRoot(credits);
+				break;	
+				
+			case RELEASE_NOTES:
+				releaseNotes = new ReleaseNotes();
+				releaseNotes.draw();
+				scene.setRoot(releaseNotes);				
+				break;		
+				
+			case HELP:
+				help = new Help();
+				help.draw();
+				scene.setRoot(help);			
+				break;	
+				
+			case EXIT:
+				System.exit(0);
+				break;
+		}
 	}
 }

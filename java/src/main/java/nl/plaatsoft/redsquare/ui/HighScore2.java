@@ -6,7 +6,6 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
 
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -14,18 +13,18 @@ import java.util.Iterator;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.MyPanel;
 import nl.plaatsoft.redsquare.tools.Score;
 import nl.plaatsoft.redsquare.tools.ScoreGlobal;
 
-public class HighScore2 extends Pane {
+public class HighScore2 extends MyPanel {
 		   
 	private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
 	
 	private int y;
 	private int lines; 
 	
-	HighScore2(final Navigator page) {
-		
+	public void draw() {
 		Image image1 = new Image("images/background1.png");
     	BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
@@ -62,7 +61,7 @@ public class HighScore2 extends Pane {
 			}
 		}
 		
-		MyButton button1 = new MyButton(230, 420, "Close", 18, page, page.getHome());
+		MyButton button1 = new MyButton(230, 420, "Close", 18, Navigator.HOME);
 		getChildren().add(button1);	
 	}
 }

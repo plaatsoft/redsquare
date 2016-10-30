@@ -6,14 +6,13 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.MyPanel;
 
-public class Help extends Pane {
+public class Help extends MyPanel {
 
-	Help(final Navigator page) {
-		
+	public void draw() {
 		Image image1 = new Image("images/background1.png");
     	BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
     	BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
@@ -32,10 +31,10 @@ public class Help extends Pane {
     	y+=30;    	 
     	getChildren().add( new MyLabel(0, y, "nor get hit by any of the blue squares.", 24, "white"));
     	y+=30;
-    	getChildren().add( new MyLabel(0, y, "If you make it to 31 seconds, you are doing", 24, "white"));
+    	getChildren().add( new MyLabel(0, y, "If you make it to 40 seconds, you are doing", 24, "white"));
     	y+=30;
     	getChildren().add( new MyLabel(0, y, "brilliantly!", 24, "white"));
     	       		
-    	getChildren().add( new MyButton(230, 420, "Close", 18, page, page.getHome()));
-   	}
+    	getChildren().add( new MyButton(230, 420, "Close", 18, Navigator.HOME));		
+	}
 }

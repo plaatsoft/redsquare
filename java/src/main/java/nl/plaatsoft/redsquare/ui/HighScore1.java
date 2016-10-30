@@ -1,15 +1,12 @@
 package nl.plaatsoft.redsquare.ui;
 
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
 
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -19,18 +16,19 @@ import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.MyPanel;
 import nl.plaatsoft.redsquare.tools.Score;
 import nl.plaatsoft.redsquare.tools.ScoreLocal;
 
-public class HighScore1 extends Pane {
+public class HighScore1 extends MyPanel {
 		   
 	private final static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
 	
 	private int y;
 	private int lines; 
 	private Task<Void> task;
-	
-	HighScore1(final Navigator page) {
+		
+	public void draw() {	
 		
 		Image image1 = new Image("images/background1.png");
     	BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -70,13 +68,8 @@ public class HighScore1 extends Pane {
 			}
 		}
 		
-		MyButton button1 = new MyButton(230, 420, "Next", 18, page, page.getHighScore2());		
-		button1.setOnAction(new EventHandler<ActionEvent>() { 
-            public void handle(ActionEvent event) {
-            	page.setHighScore2();
-            }
-        });
-		getChildren().add(button1);			
+		getChildren().add( new MyButton(230, 420, "Next", 18, Navigator.GLOBAL_HIGHSCORE));		
+		
 		
 		task = new Task<Void>() {
 	        public Void call() {
@@ -84,9 +77,7 @@ public class HighScore1 extends Pane {
 	            return null;
 	        }
 		};
-	}
-	
-	void draw() {				
+		
 		new Thread(task).start();
 	}
 }

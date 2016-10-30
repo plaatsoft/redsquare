@@ -23,11 +23,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
     	    	   
     	setUserAgentStylesheet(STYLESHEET_MODENA);
-    	
-    	Navigator page = new Navigator();
-    	    
+    	    	
+    	Navigator.go(Navigator.INTRO1);
+       	     	    
         primaryStage.setTitle(Constants.APP_NAME+" v"+Constants.APP_VERSION);
-        primaryStage.setScene(page.getScene());
+        primaryStage.setScene(Navigator.getScene());
         primaryStage.sizeToScene();
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("images/logo3.png"));

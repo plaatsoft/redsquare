@@ -10,16 +10,17 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
+
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.MyPanel;
 
-public class Intro2 extends Pane {
+public class Intro2 extends MyPanel {
 
 	private MyImageView imageView1;
 	private AnimationTimer timer;
 	
-	Intro2(final Navigator page) {
+	Intro2() {
 		
 		Image image1 = new Image("images/background2.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -40,14 +41,14 @@ public class Intro2 extends Pane {
 		setOnMousePressed(new EventHandler<MouseEvent>() {
 
 	        public void handle(MouseEvent t) {
-				page.setHome();						
+				Navigator.go(Navigator.HOME);						
 	        }
 	    });
 		
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 		    public void handle(KeyEvent kEvent) {
-		    	page.setHome();			
+		    	Navigator.go(Navigator.HOME);		
 		    }
 		});
 		
@@ -67,7 +68,7 @@ public class Intro2 extends Pane {
 	    };		
 	}
 	
-	void draw() {		
+	public void draw() {		
 		timer.start();
 	}
 }

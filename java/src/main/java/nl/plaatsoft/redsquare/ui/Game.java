@@ -20,7 +20,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -30,11 +30,12 @@ import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
+import nl.plaatsoft.redsquare.tools.MyPanel;
 import nl.plaatsoft.redsquare.tools.Score;
 import nl.plaatsoft.redsquare.tools.ScoreLocal;
 import nl.plaatsoft.redsquare.tools.Square;
 
-public class Game extends Pane {
+public class Game extends MyPanel {
 
 	private final static Logger log = Logger.getLogger( Game.class);
 	private final static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
@@ -60,7 +61,7 @@ public class Game extends Pane {
 	private double offsetX=0;
 	private double offsetY=0;
 	
-	private Task<Void> task;
+	private Task<Void> task1;
 	private Score score;
 
 	private boolean collisionDetection() {
@@ -115,14 +116,14 @@ public class Game extends Pane {
 		mp.play();
 	}
 		
-	private void gameOver(final Navigator page) {
+	private void gameOver() {
 		
  	   go = false; 
  	   
  	   timer1.stop();
  	   gameOverSound();
  	   
-	   getChildren().add(new MyButton(230, 380, "Exit", 18, page, page.getHome()));
+	   getChildren().add(new MyButton(230, 380, "Exit", 18, Navigator.HOME));
   	   int y=50;
   	   getChildren().add(new MyLabel(0, y, "Game Over",60, "black"));
   	   y=y+80;
@@ -154,16 +155,16 @@ public class Game extends Pane {
   	   }	   			
   	   
   	   /* Sent score to cloud server */
-  	   task = new Task<Void>() {
+  	   task1 = new Task<Void>() {
   		   public Void call() {
   			   CloudScore.set(Constants.APP_WS_NAME, Constants.APP_VERSION, score ); 
   			   return null;
   		   }
 	   };
-	   new Thread(task).start();
+	   new Thread(task1).start();
 	}
 	
-	Game(final Navigator page) {
+	Game() {
 							
 		formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
 		
@@ -249,7 +250,7 @@ public class Game extends Pane {
 	           label3.setText(""+level);
 	           
 	           if (collisionDetection()) {
-	        	   gameOver(page);
+	        	   gameOver();
 	           }
 	       }
 	   };	

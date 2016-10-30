@@ -3,12 +3,11 @@ package nl.plaatsoft.redsquare.tools;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import nl.plaatsoft.redsquare.ui.Navigator;
 
 public class MyButton extends Button {
 
-	public MyButton(int x, int y, String value, int fontSize, final Navigator page, final Pane object) {
+	public MyButton(int x, int y, String value, int fontSize, final int page) {
 		
 		setText(value);
 	    setPrefWidth(180);
@@ -19,7 +18,7 @@ public class MyButton extends Button {
 		
 	    setOnAction(new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent event) {
-            	page.setScene(object);
+            	Navigator.go(page);
             }
         });
 	}     
