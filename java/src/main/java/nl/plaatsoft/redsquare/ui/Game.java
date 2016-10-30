@@ -24,7 +24,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import nl.plaatsoft.redsquare.network.CloudGeoCode;
+
 import nl.plaatsoft.redsquare.network.CloudScore;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
@@ -136,7 +136,7 @@ public class Game extends MyPanel {
   	   getChildren().add(new MyLabel(0, y, label1.getText(),20, "black"));
   	   y=y+30;
   	  	
-  	   score = new Score(starttime, points, level, "", CloudGeoCode.getCountry(), CloudGeoCode.getCity());
+  	   score = new Score(starttime, points, level, "", "", "");
   	   int ranking = ScoreLocal.addScore(score);  	   
   	   
   	   if (ranking<16) {
