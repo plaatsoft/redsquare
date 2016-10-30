@@ -13,7 +13,7 @@ import nl.plaatsoft.redsquare.tools.MyPanel;
 
 public class ReleaseNotes extends MyPanel {
 
-	String notes="29-10-2016 (Version 0.1)\n"
+	String notes="30-10-2016 (Version 0.1)\n"
 			+ "- Added basic sound effects.\n"
 			+ "- Added nice background music.\n"
 			+ "- Added webservice to store local and global highscore.\n"
