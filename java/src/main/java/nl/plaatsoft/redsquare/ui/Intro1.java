@@ -52,13 +52,7 @@ public class Intro1 extends MyPanel {
 	        public void handle(MouseEvent t) {
 	        	Navigator.go(Navigator.INTRO2);			
 	        }
-	    });
-		
-		setOnKeyPressed(new EventHandler<KeyEvent>() {
-		    public void handle(KeyEvent ke) {
-		    	Navigator.go(Navigator.INTRO2);			
-		    }
-		});		
+	    });		
 	}
 	
 	public void draw() {		

@@ -1,6 +1,8 @@
 package nl.plaatsoft.redsquare.ui;
 
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.ScoreGlobal;
 
@@ -41,13 +43,23 @@ public class Navigator {
 			case INTRO1:
 				intro1 = new Intro1();
 				intro1.draw();
-				scene = new Scene(intro1, Constants.WIDTH, Constants.HEIGHT);				
+				scene = new Scene(intro1, Constants.WIDTH, Constants.HEIGHT);	
+				scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				    public void handle(KeyEvent key) {
+				    	Navigator.go(Navigator.INTRO2);			
+				    }
+				});						
 				break;
 			
 			case INTRO2:
 				intro2 = new Intro2();				
 				intro2.draw();
-				scene.setRoot(intro2);				
+				scene.setRoot(intro2);
+				scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				    public void handle(KeyEvent key) {
+				    	Navigator.go(Navigator.HOME);			
+				    }
+				});		
 				break;		
 				
 			case HOME:
@@ -55,7 +67,12 @@ public class Navigator {
 					home = new Home();
 				}
 				home.draw();
-				scene.setRoot(home);				
+				scene.setRoot(home);	
+				scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				    public void handle(KeyEvent key) {
+				       // switch it off
+				    }
+				});		
 				break;		
 		
 			case GAME:

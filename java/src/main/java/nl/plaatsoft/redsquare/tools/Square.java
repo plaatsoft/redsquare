@@ -2,8 +2,7 @@ package nl.plaatsoft.redsquare.tools;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 
 public class Square extends ImageView{
 	
@@ -43,11 +42,9 @@ public class Square extends ImageView{
 		
 	private void collisionSound() {
 		
-		if (sound) {
-			String path = getClass().getResource("/music/effect1.mp3").toExternalForm();
-			Media media = new Media(path);
-			MediaPlayer mp = new MediaPlayer(media);
-			mp.play();
+		if (sound) {	
+			AudioClip sound = new AudioClip(getClass().getResource("/music/effect1.mp3").toExternalForm());
+			sound.play();
 		}
 	}
 	

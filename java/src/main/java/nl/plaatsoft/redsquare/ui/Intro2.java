@@ -44,14 +44,7 @@ public class Intro2 extends MyPanel {
 				Navigator.go(Navigator.HOME);						
 	        }
 	    });
-		
-		setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-		    public void handle(KeyEvent kEvent) {
-		    	Navigator.go(Navigator.HOME);		
-		    }
-		});
-		
+				
 		timer = new AnimationTimer() {			 
 		float size = (float) 0.025;
 			 	

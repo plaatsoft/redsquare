@@ -20,9 +20,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
 import nl.plaatsoft.redsquare.network.CloudScore;
@@ -107,21 +105,16 @@ public class Game extends MyPanel {
 	    }
 		return false;
 	}
-		
-	private void gameOverSound() {
-		
-		String path = getClass().getResource("/music/effect2.mp3").toExternalForm();
-		Media media = new Media(path);
-		MediaPlayer mp = new MediaPlayer(media);
-		mp.play();
-	}
+	
 		
 	private void gameOver() {
 		
  	   go = false; 
  	   
  	   timer1.stop();
- 	   gameOverSound();
+ 	   
+ 	   AudioClip sound = new AudioClip(getClass().getResource("/music/effect2.mp3").toExternalForm());
+ 	   sound.play();
  	   
 	   getChildren().add(new MyButton(230, 380, "Exit", 18, Navigator.HOME));
   	   int y=50;
