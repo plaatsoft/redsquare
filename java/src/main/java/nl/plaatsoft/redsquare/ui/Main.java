@@ -1,6 +1,8 @@
 package nl.plaatsoft.redsquare.ui;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 import nl.plaatsoft.redsquare.tools.Constants;
 import javafx.scene.image.Image;
@@ -33,11 +35,13 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("images/logo3.png"));
         primaryStage.show();
         
-        music();               
+        music();        
     }
     
     public static void main(String[] args) {
 
         launch(args);
     }
+    
+    
 }

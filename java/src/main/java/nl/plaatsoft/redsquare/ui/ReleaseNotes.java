@@ -1,5 +1,9 @@
 package nl.plaatsoft.redsquare.ui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.geometry.Orientation;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -12,8 +16,16 @@ import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
 
 public class ReleaseNotes extends MyPanel {
-
-	String notes="30-10-2016 (Version 0.1)\n"
+	
+	private static String[] version = {
+						
+	        "31-10-2016 (Version 0.2)\n"
+			+ "- Protect blue squares against size hacking.\n"
+			+ "- Protect red square against size hacking.\n"
+			+ "- Added scrollbar to release notes page.\n"
+			+ "- Added CGI master hackers to credits page.\n",
+	
+			"30-10-2016 (Version 0.1)\n"
 			+ "- Added basic sound effects.\n"
 			+ "- Added nice background music.\n"
 			+ "- Added webservice to store local and global highscore.\n"
@@ -21,7 +33,9 @@ public class ReleaseNotes extends MyPanel {
 			+ "- Added page navigator so pages are loaded just in time.\n"
 			+ "- Added game page with special effects.\n"
 			+ "- Added two intro pages with basic animation.\n"
-			+ "- Added help, credits, release notes and donate page.\n";
+			+ "- Added help, credits, release notes and donate page.\n"};
+
+	private static MyLabel text;
 	
 	public void draw() {
 		
@@ -31,8 +45,30 @@ public class ReleaseNotes extends MyPanel {
     	Background background = new Background(backgroundImage);
     	    	  
     	setBackground(background);
+    	
+    	 ScrollBar s1 = new ScrollBar();
+    	 s1.setMin(0);
+    	 s1.setMax(version.length-1);         
+         s1.setValue(0);
+         s1.setUnitIncrement(1);
+         s1.setBlockIncrement(1);
+         s1.setLayoutX(590);
+         s1.setLayoutY(125);
+         s1.setMinWidth(25);
+         s1.setMinHeight(275);
+         s1.setOrientation(Orientation.VERTICAL);
+         
+         s1.valueProperty().addListener(new ChangeListener<Number>() {
+             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+            	 text.setText(version[new_val.intValue()]);
+             }
+         });
+         
+         getChildren().add(s1);
+                  
     	getChildren().add( new MyLabel(0, 20, "Release Notes", 60, "white"));
-    	getChildren().add( new MyLabel(30, 120, notes, 20, "white"));    	
-    	getChildren().add( new MyButton(230, 420, "Close", 18, Navigator.HOME));           		
+    	text = new MyLabel(30, 120, version[0], 20, "white");
+    	getChildren().add( text );    	
+    	getChildren().add( new MyButton(230, 420, "Close", 18, Navigator.HOME));     
 	}
 }

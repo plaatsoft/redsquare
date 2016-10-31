@@ -13,11 +13,12 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 
 import nl.plaatsoft.redsquare.network.CloudVersion;
+import nl.plaatsoft.redsquare.resources.Square;
+import nl.plaatsoft.redsquare.resources.Squares;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
-import nl.plaatsoft.redsquare.tools.Square;
 
 public class Home extends MyPanel {
 
@@ -38,11 +39,11 @@ public class Home extends MyPanel {
 		
 		int step = 1;
 		
-		blue1 = new Square("bluesquare1.png", 30, 30, 1, 1, step, false);
-		blue2 = new Square("bluesquare2.png", 500, 30, 1, 0, step, false);
-		blue3 = new Square("bluesquare3.png", 30, 400, 0, 1 ,step, false);
-		blue4 = new Square("bluesquare4.png", 500, 400, 0, 0 , step, false);
-		red = new Square("redsquare.png", 10, 10, 0, 0, 2, false);
+		blue1 = new Square(Squares.getBlue1(), 30, 30, 1, 1, step, false);
+		blue2 = new Square(Squares.getBlue2(), 500, 30, 1, 0, step, false);
+		blue3 = new Square(Squares.getBlue3(), 30, 400, 0, 1 ,step, false);
+		blue4 = new Square(Squares.getBlue4(), 500, 400, 0, 0 , step, false);
+		red = new Square(Squares.getRed(), 10, 10, 0, 0, 2, false);
 					
 		getChildren().add(blue1);
 		getChildren().add(blue2);    	

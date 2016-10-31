@@ -32,7 +32,9 @@ public class CloudScore {
 		parameters += "user="+System.getProperty("user.name") + "&";
 		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
 		
-		CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info(Constants.APP_WS_URL+ " "+parameters);
+		String result = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info(result);
 	}
 	
 	public static void getLocal(String product, String version) {
@@ -40,11 +42,14 @@ public class CloudScore {
 		String parameters;
 		parameters  = "action=getLocal&";
 		parameters += "product=" + Constants.APP_WS_NAME + "&";
+		parameters += "version=" + version  + "&";
 		parameters += "user="+System.getProperty("user.name") + "&";
 		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
 		
+		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
-						
+		log.info(json);
+		
 		try {
 			JSONArray jsonarray = new JSONArray(json);
 			for (int i = 0; i < jsonarray.length(); i++) {
@@ -72,10 +77,13 @@ public class CloudScore {
 		String parameters;
 		parameters  = "action=getGlobal&";
 		parameters += "product=" + Constants.APP_WS_NAME + "&";
+		parameters += "version=" + version  + "&";
 		parameters += "user="+System.getProperty("user.name") + "&";
 		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
 		
+		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info(json);
 						
 		try {
 			JSONArray jsonarray = new JSONArray(json);

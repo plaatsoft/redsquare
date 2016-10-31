@@ -3,8 +3,8 @@ package nl.plaatsoft.redsquare.tools;
 public class Constants {
 
 	public final static String APP_NAME = "RedSquare";
-	public final static String APP_VERSION = "0.1";
-	public final static String APP_BUILD = "Build (30-10-2016)";
+	public final static String APP_VERSION = "0.2";
+	public final static String APP_BUILD = "Build (31-10-2016)";
 	
 	public final static String APP_WS_NAME = "Java-RedSquare";
 	public final static String APP_WS_URL = "https://service.plaatsoft.nl";

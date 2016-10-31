@@ -25,6 +25,8 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
 import nl.plaatsoft.redsquare.network.CloudScore;
+import nl.plaatsoft.redsquare.resources.Square;
+import nl.plaatsoft.redsquare.resources.Squares;
 import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyImageView;
@@ -32,11 +34,9 @@ import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
 import nl.plaatsoft.redsquare.tools.Score;
 import nl.plaatsoft.redsquare.tools.ScoreLocal;
-import nl.plaatsoft.redsquare.tools.Square;
 
 public class Game extends MyPanel {
 
-	private final static Logger log = Logger.getLogger( Game.class);
 	private final static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 	
 	private Square blue1;
@@ -67,42 +67,35 @@ public class Game extends MyPanel {
 	private boolean collisionDetection() {
 		
 	    if (red.getLayoutX()<borderSize) {
-	       log.info("left wall collision");
 	       return true;
 	    }
 
 	    if ((red.getLayoutX()+red.getWidth())>(Constants.WIDTH-borderSize)) {
-	    	 log.info("right wall collision");
+
 	       return true;
 	    }
 
 	    if (red.getLayoutY()<borderSize) {
-	    	 log.info("top wall collision");
 	       return true;
 	    }
 
 	    if ((red.getLayoutY()+red.getHeight())>(Constants.HEIGHT-borderSize)) {
-	    	 log.info("bottom wall collision");
 	       return true;
 	    }
 	    
 	    if (blue1.collision(red)) {
-	    	log.info("collision with blue1");
 	    	return true;
 	    }
 	    
 	    if (blue2.collision(red)) {
-	    	log.info("collision with blue2");
 	    	return true;
 	    }
 	    
 	    if (blue3.collision(red)) {
-	    	log.info("collision with blue3");
 	    	return true;
 	    }
 	    
 	    if (blue4.collision(red)) {
-	    	log.info("collision with blue4");
 	    	return true;
 	    }
 		return false;
@@ -167,12 +160,12 @@ public class Game extends MyPanel {
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		Background background = new Background(backgroundImage);
-		
-		blue1 = new Square("bluesquare1.png", 1, 1, 1, 1, 1, true);
-		blue2 = new Square("bluesquare2.png", 1, 1, 1, 0, 1, true);
-		blue3 = new Square("bluesquare3.png", 1, 1, 0, 1, 1, true);
-		blue4 = new Square("bluesquare4.png", 1, 1, 0, 0, 1, true);
-		red = new Square("redsquare.png", 300, 300, 0, 0, 0, false);		
+				
+		blue1 = new Square(Squares.getBlue1(), 1, 1, 1, 1, 1, true);
+		blue2 = new Square(Squares.getBlue2(), 1, 1, 1, 0, 1, true);
+		blue3 = new Square(Squares.getBlue3(), 1, 1, 0, 1, 1, true);
+		blue4 = new Square(Squares.getBlue4(), 1, 1, 0, 0, 1, true);
+		red = new Square(Squares.getRed(), 300, 300, 0, 0, 0, false);		
     			
 		red.setOnMousePressed(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent me) {

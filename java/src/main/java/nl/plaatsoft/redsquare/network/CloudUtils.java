@@ -48,8 +48,6 @@ public class CloudUtils {
 	}
 	
 	public static String executePost(String targetURL, String urlParameters) {
-
-		log.info(targetURL+' '+urlParameters);
 		
 		String text="";
 		HttpURLConnection connection = null;
@@ -80,8 +78,7 @@ public class CloudUtils {
 				response.append('\r');
 			}
 			rd.close();
-			
-			log.info(response.toString());			
+				
 			return response.toString();
 			
 		} catch (Exception e) {

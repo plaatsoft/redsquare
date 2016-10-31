@@ -34,17 +34,15 @@ public class Credits extends MyPanel {
 	    y+=30;    	 
 	    getChildren().add( new MyLabel(0, y, "wplaat", 18, "white"));
 	    y+=30;
-	    getChildren().add( new MyLabel(0, y, "MUSIC", 24, "white"));
-	    y+=30;
-	    getChildren().add( new MyLabel(0, y, "modarchive.org", 18, "white"));
-	    y+=30;
-	    getChildren().add( new MyLabel(0, y, "SOUND EFFECTS", 24, "white"));
+	    getChildren().add( new MyLabel(0, y, "MUSIC & SOUND EFFECTS", 24, "white"));
 	    y+=30;
 	    getChildren().add( new MyLabel(0, y, "wplaat", 18, "white"));
 	    y+=30;
 	    getChildren().add( new MyLabel(0, y, "TESTERS", 24, "white"));
 	    y+=30;
-	    getChildren().add( new MyLabel(0, y, "wplaat, lplaat, splaat, bplaat, jplaat", 18, "white"));
+	    getChildren().add( new MyLabel(0, y, "wplaat, lplaat, splaat, bplaat,", 18, "white"));
+	    y+=30;
+	    getChildren().add( new MyLabel(0, y, "mriel, epronk, rsiemonsma, rboedhoer", 18, "white"));
 	    	     
 	    getChildren().add( new MyButton(230, 420, "Close", 18, Navigator.HOME));		
 	}

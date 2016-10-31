@@ -1,10 +1,15 @@
-package nl.plaatsoft.redsquare.tools;
+package nl.plaatsoft.redsquare.resources;
+
+import org.apache.log4j.Logger;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
+import nl.plaatsoft.redsquare.tools.Constants;
 
 public class Square extends ImageView{
+	
+	final static Logger log = Logger.getLogger( Square.class);
 	
 	private int directionHorizontal;
 	private int directionVertical;
@@ -23,10 +28,10 @@ public class Square extends ImageView{
 		setLayoutX(x);
 		setLayoutY(y);
 	}
+	
+	public Square(Image image ,int x, int y, int dirHor, int dirVer, int step, boolean sound) {
 
-	public Square(String filename,int x, int y, int dirHor, int dirVer, int step, boolean sound) {
-
-		setImage(new Image("images/"+filename));
+		setImage(image);
 		this.x = x;
 		this.y = y;		
 		this.width = getImage().getWidth();

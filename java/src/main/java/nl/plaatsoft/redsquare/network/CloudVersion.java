@@ -12,9 +12,11 @@ public class CloudVersion {
 	public static String check(String product, String version) {
 
 		String returnValue="";		
-		String parameters = "action=version&product=" +  product + "&version=" + version;
+		String parameters = "action=getVersion&product=" +  product + "&version=" + version;
 						
+		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
+		log.info(json);
 		
 		try {
 			JSONObject obj = new JSONObject(json);
