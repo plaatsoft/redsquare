@@ -19,12 +19,14 @@ public class ReleaseNotes extends MyPanel {
 	
 	private static String[] version = {
 						
-	        "31-10-2016 (Version 0.2)\n"
+	        "01-11-2016 (Version 0.2)\n"
 			+ "- Protect blue squares against size hacking.\n"
 			+ "- Protect red square against size hacking.\n"
 			+ "- Added scrollbar to release notes page.\n"
 			+ "- Added CGI master hackers to credits page.\n"
-			+ "- Improve webservice calls.\n",
+			+ "- Improve webservice calls.\n"
+			+ "- Check java version. If version is outdated, warn user.\n"
+			+ "- Show warning when internet connection down.\n",
 	
 			"30-10-2016 (Version 0.1)\n"
 			+ "- Added basic sound effects.\n"
