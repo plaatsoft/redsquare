@@ -12,7 +12,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 
-import nl.plaatsoft.redsquare.network.CloudVersion;
+import nl.plaatsoft.redsquare.network.CloudNewVersion;
 import nl.plaatsoft.redsquare.resources.Square;
 import nl.plaatsoft.redsquare.resources.Squares;
 import nl.plaatsoft.redsquare.tools.Constants;
@@ -86,7 +86,7 @@ public class Home extends MyPanel {
 			    
 	    task = new Task<Void>() {
 	        public Void call() {
-	           	 upgrade = CloudVersion.check(Constants.APP_WS_NAME, Constants.APP_VERSION); 
+	           	 upgrade = CloudNewVersion.get(); 
 	            return null;
 	        }
 		};

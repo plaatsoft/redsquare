@@ -1,6 +1,7 @@
 package nl.plaatsoft.redsquare.ui;
 
 import javafx.animation.AnimationTimer;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -9,7 +10,8 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-
+import nl.plaatsoft.redsquare.network.CloudScore;
+import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
@@ -18,6 +20,7 @@ public class Intro2 extends MyPanel {
 
 	private MyImageView imageView1;
 	private AnimationTimer timer;
+	private Task<Void> task;
 	
 	Intro2() {
 		
@@ -61,6 +64,14 @@ public class Intro2 extends MyPanel {
 	}
 	
 	public void draw() {		
-		timer.start();
+		 task = new Task<Void>() {
+		       public Void call() {
+		          	CloudScore.getLocal(); 
+		            return null;
+		        }
+			};
+			
+			timer.start();
+			new Thread(task).start();
 	}
 }

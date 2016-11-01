@@ -5,14 +5,14 @@ import org.json.JSONObject;
 
 import nl.plaatsoft.redsquare.tools.Constants;
 
-public class CloudVersion {
+public class CloudNewVersion {
 	
-	final static Logger log = Logger.getLogger( CloudVersion.class);
-	
-	public static String check(String product, String version) {
+	final static Logger log = Logger.getLogger( CloudNewVersion.class);
+		
+	public static String get() {
 
 		String returnValue="";		
-		String parameters = "action=getVersion&product=" +  product + "&version=" + version;
+		String parameters = "action=getVersion&product="+Constants.APP_WS_NAME; 
 						
 		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
@@ -20,13 +20,14 @@ public class CloudVersion {
 		
 		try {
 			JSONObject obj = new JSONObject(json);
-			String newVersion = obj.getString(product);
-			if (Float.parseFloat(newVersion)>Float.parseFloat(version)) {
+			String newVersion = obj.getString("product");
+			if (Float.parseFloat(newVersion)>Float.parseFloat(Constants.APP_VERSION)) {
 				returnValue = Constants.APP_NAME+" v"+newVersion+" available.";
 			}
 			
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			returnValue = "No Internet connection!";
+			log.error(e.getMessage());			
 		}
 
 		return returnValue;			

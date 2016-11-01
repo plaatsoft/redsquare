@@ -12,9 +12,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-
-import nl.plaatsoft.redsquare.network.CloudScore;
-import nl.plaatsoft.redsquare.tools.Constants;
+import nl.plaatsoft.redsquare.network.CloudGeoCode;
+import nl.plaatsoft.redsquare.network.CloudProduct;
+import nl.plaatsoft.redsquare.network.CloudUser;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
@@ -73,7 +73,9 @@ public class Intro1 extends MyPanel {
 	    
 	    task = new Task<Void>() {
 	        public Void call() {
-	           	CloudScore.getLocal(Constants.APP_WS_NAME, Constants.APP_VERSION); 
+	           	CloudProduct.getPid(); 
+	            CloudUser.getUid();
+	            
 	            return null;
 	        }
 		};

@@ -23,7 +23,8 @@ public class ReleaseNotes extends MyPanel {
 			+ "- Protect blue squares against size hacking.\n"
 			+ "- Protect red square against size hacking.\n"
 			+ "- Added scrollbar to release notes page.\n"
-			+ "- Added CGI master hackers to credits page.\n",
+			+ "- Added CGI master hackers to credits page.\n"
+			+ "- Improve webservice calls.\n",
 	
 			"30-10-2016 (Version 0.1)\n"
 			+ "- Added basic sound effects.\n"

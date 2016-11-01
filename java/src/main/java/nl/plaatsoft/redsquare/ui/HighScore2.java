@@ -87,10 +87,10 @@ public class HighScore2 extends MyPanel {
 		MyButton button1 = new MyButton(230, 420, "Close", 18, Navigator.HOME);
 		
 		getChildren().add(button1);	
-		
+				
 		task = new Task<Void>() {
 	        public Void call() {
-	           	CloudScore.getGlobal(Constants.APP_WS_NAME, Constants.APP_VERSION); 
+	           	CloudScore.getGlobal(); 
 	            return null;
 	        }
 		};

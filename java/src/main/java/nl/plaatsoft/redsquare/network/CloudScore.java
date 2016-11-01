@@ -20,31 +20,25 @@ public class CloudScore {
 	public static void set(String product, String version, Score score) {
 					
 		String parameters;
-		parameters  = "action=setLocal&";
-		parameters += "product=" + Constants.APP_WS_NAME + "&";
-		parameters += "version=" + version  + "&";
+		parameters  = "action=setScore&";
+		parameters += "pid=" + CloudProduct.getPid()+ "&";
+		parameters += "uid=" + CloudUser.getUid()  + "&";
 		/* Remove milli seconds */
 		parameters += "dt=" + (score.getTimestamp().getTime()/1000) + "&";
 		parameters += "score=" + score.getScore() + "&";
-		parameters += "level=" + score.getLevel() + "&";
-		parameters += "country="+CloudGeoCode.getCountry()+ "&";
-		parameters += "city="+CloudGeoCode.getCity()+ "&";
-		parameters += "user="+System.getProperty("user.name") + "&";
-		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
+		parameters += "level=" + score.getLevel();
 		
 		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String result = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
 		log.info(result);
 	}
 	
-	public static void getLocal(String product, String version) {
+	public static void getLocal() {
 		
 		String parameters;
-		parameters  = "action=getLocal&";
-		parameters += "product=" + Constants.APP_WS_NAME + "&";
-		parameters += "version=" + version  + "&";
-		parameters += "user="+System.getProperty("user.name") + "&";
-		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
+		parameters  = "action=getLocalScore&";
+		parameters += "pid=" + CloudProduct.getPid() + "&";
+		parameters += "uid=" + CloudUser.getUid();
 		
 		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
@@ -57,9 +51,9 @@ public class CloudScore {
 			    String dt = jsonobject.getString("dt");
 			    int points = jsonobject.getInt("score");
 			    int level = jsonobject.getInt("level");
-			    String user = jsonobject.getString("user");
-			    String city = jsonobject.getString("city");
-			    String country = jsonobject.getString("country");
+			    String user = "";
+			    String city = "";
+			    String country = "";
 			    
 			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			    Date date = df.parse(dt);
@@ -72,14 +66,11 @@ public class CloudScore {
 		}
 	}
 	
-	public static void getGlobal(String product, String version) {
+	public static void getGlobal() {
 		
 		String parameters;
-		parameters  = "action=getGlobal&";
-		parameters += "product=" + Constants.APP_WS_NAME + "&";
-		parameters += "version=" + version  + "&";
-		parameters += "user="+System.getProperty("user.name") + "&";
-		parameters += "os="+System.getProperty("os.name").replaceAll(" ","");
+		parameters  = "action=getGlobalScore&";
+		parameters += "pid=" + CloudProduct.getPid();
 		
 		log.info(Constants.APP_WS_URL+ " "+parameters);
 		String json = CloudUtils.executePost(Constants.APP_WS_URL, parameters);
@@ -92,10 +83,10 @@ public class CloudScore {
 			    String dt = jsonobject.getString("dt");
 			    int points = jsonobject.getInt("score");
 			    int level = jsonobject.getInt("level");
-			    String user = jsonobject.getString("user");
-			    String city = jsonobject.getString("city");
+			    String user = jsonobject.getString("username");
 			    String country = jsonobject.getString("country");
-			    
+			    String city = "";
+			    			    
 			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			    Date date = df.parse(dt);
 			    

@@ -10,7 +10,7 @@ public class CloudGeoCode {
 	static private String country;
 	static private String city;
 			
-	static public void get() {
+	static private void fetch() {
 		
 		String url = "http://freegeoip.net/json";
 			
@@ -31,14 +31,14 @@ public class CloudGeoCode {
 	static public String getCountry() {
 		
 		if (country==null) {
-			 get();
+			fetch();
 		}
 		return country.toLowerCase();
 	}
 
 	static public String getCity() {
 		if (city==null) {
-			 get();
+			fetch();
 		}
 		return city.toLowerCase();
 	}
