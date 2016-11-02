@@ -17,7 +17,9 @@ public class Navigator {
 	private static HighScore2 highScore2;
 	private static Credits credits;	
 	private static ReleaseNotes releaseNotes;
-	private static Help help;		
+	private static Help help;
+	private static Settings settings;	
+	
 	private static Scene scene;	
 			
 	public static final int INTRO1 = 1;
@@ -30,7 +32,8 @@ public class Navigator {
 	public static final int CREDITS = 8;
 	public static final int RELEASE_NOTES = 9;
 	public static final int HELP = 10;
-	public static final int EXIT = 11;
+	public static final int SETTINGS = 11;
+	public static final int EXIT = 12;
 			
 	public static Scene getScene() {
 		return scene;
@@ -113,6 +116,12 @@ public class Navigator {
 				releaseNotes.draw();
 				scene.setRoot(releaseNotes);				
 				break;		
+				
+			case SETTINGS:
+				settings = new Settings();
+				settings.draw();
+				scene.setRoot(settings);			
+				break;	
 				
 			case HELP:
 				help = new Help();

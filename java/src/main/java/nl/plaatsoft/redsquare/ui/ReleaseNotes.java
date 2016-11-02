@@ -26,7 +26,7 @@ public class ReleaseNotes extends MyPanel {
 			+ "- Added CGI master hackers to credits page.\n"
 			+ "- Improve webservice calls.\n"
 			+ "- Check java version. If version is outdated, warn user.\n"
-			+ "- Show warning when internet connection down.\n",
+			+ "- Show warning when internet connection is down.\n",
 	
 			"30-10-2016 (Version 0.1)\n"
 			+ "- Added basic sound effects.\n"

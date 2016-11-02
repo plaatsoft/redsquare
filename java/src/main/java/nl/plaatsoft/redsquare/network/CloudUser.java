@@ -10,11 +10,13 @@ public class CloudUser {
 	final static Logger log = Logger.getLogger( CloudUser.class);
 	
 	private static int uid=0;
+	private static String nickName;
 	
 	public static void fetch() {
 
 		String parameters = "action=getUser"+
 				"&username=" + System.getProperty("user.name") +
+				"&nickname=" + System.getProperty("user.name") +
 				"&country=" +  CloudGeoCode.getCountry() +
 				"&city=" +  CloudGeoCode.getCity();
 						
@@ -24,7 +26,9 @@ public class CloudUser {
 		
 		try {
 			JSONObject obj = new JSONObject(json);
-			uid = obj.getInt("uid");		
+			uid = obj.getInt("uid");
+			nickName = obj.getString("nickname");		
+			
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
@@ -36,4 +40,9 @@ public class CloudUser {
 		}
 		return uid;
 	}
+	
+	public static String getNickname() {
+		return nickName;
+	}
 }
+

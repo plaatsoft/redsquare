@@ -16,10 +16,7 @@ import nl.plaatsoft.redsquare.tools.MyPanel;
 
 public class Intro2 extends MyPanel {
 
-	private MyImageView imageView1;
-	private AnimationTimer timer;
-	
-	Intro2() {
+	public void draw() {	
 		
 		Image image1 = new Image("images/background2.png");
 		BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -28,7 +25,7 @@ public class Intro2 extends MyPanel {
 		
 		getChildren().add(new MyLabel(0,30,"For more information visit",26, "white"));
 		getChildren().add(new MyLabel(0,70,"www.plaatsoft.nl",26, "white"));
-		imageView1 = new MyImageView(200,150, "images/logo2.png",1);		
+		MyImageView imageView1 = new MyImageView(200,150, "images/logo2.png",1);		
 		getChildren().add(imageView1);
 		getChildren().add(new MyLabel(0,410,"RedSquare is also available for Nintendo Wii",16, "white"));
 		
@@ -39,7 +36,7 @@ public class Intro2 extends MyPanel {
 	        }
 	    });
 				
-		timer = new AnimationTimer() {			 
+		AnimationTimer timer = new AnimationTimer() {			 
 		float size = (float) 0.025;
 			 	
 	    @Override
@@ -53,9 +50,7 @@ public class Intro2 extends MyPanel {
 	       	imageView1.setScaleY(size);
 	      }
 	    };		
-	}
-	
-	public void draw() {		
+	    
 		timer.start();
 	}
 }

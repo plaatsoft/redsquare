@@ -62,13 +62,23 @@ public class Home extends MyPanel {
 		label3 = new MyLabel(30, 420, "", 20, "white");
 		getChildren().add(label3);
 				
-		getChildren().add( new MyButton(430, 40, "Play", 18, Navigator.GAME));
-		getChildren().add( new MyButton(430, 90, "High Score", 18, Navigator.LOCAL_HIGHSCORE));
-		getChildren().add( new MyButton(430, 140, "Help", 18, Navigator.HELP));
-		getChildren().add( new MyButton(430, 190, "Credits", 18, Navigator.CREDITS));
-		getChildren().add( new MyButton(430, 240, "Release Notes", 18, Navigator.RELEASE_NOTES));
-		getChildren().add( new MyButton(430, 290, "Donate", 18, Navigator.DONATE));
-		getChildren().add( new MyButton(430, 410, "Exit", 18, Navigator.EXIT));	
+		int y = 30;
+		getChildren().add( new MyButton(430, y, "Play", 18, Navigator.GAME));
+		y += 45;
+		getChildren().add( new MyButton(430, y, "High Score", 18, Navigator.LOCAL_HIGHSCORE));
+		y += 45;	
+		getChildren().add( new MyButton(430, y, "Settings", 18, Navigator.SETTINGS));
+		y += 45;
+		getChildren().add( new MyButton(430, y, "Help", 18, Navigator.HELP));
+		y += 45;
+		getChildren().add( new MyButton(430, y, "Credits", 18, Navigator.CREDITS));
+		y += 45;
+		getChildren().add( new MyButton(430, y, "Release Notes", 18, Navigator.RELEASE_NOTES));
+		y += 45;
+		getChildren().add( new MyButton(430, y, "Donate", 18, Navigator.DONATE));
+		
+		y = Constants.HEIGHT-70;
+		getChildren().add( new MyButton(430, y, "Exit", 18, Navigator.EXIT));	
 			
 				
 		timer = new AnimationTimer() {
