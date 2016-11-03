@@ -7,17 +7,15 @@ public class Score {
 	private Date timestamp;
 	private int score;
 	private int level;
-	private String user;
+	private String nickname;
 	private String country;
-	private String city;
 	
-	public Score(Date timestamp, int score, int level, String user, String country, String city) {
+	public Score(Date timestamp, int score, int level, String nickname, String country) {
 		this.timestamp = timestamp;
 		this.score = score;
 		this.level = level;
-		this.user = user;
+		this.nickname = nickname;
 		this.country = country;
-		this.city = city;
 	}
 	
 	public Date getTimestamp() {
@@ -44,14 +42,6 @@ public class Score {
 		this.level = level;
 	}
 
-	public String getUser() {
-		return user;
-	}
-
-	public void setName(String user) {
-		this.user = user;
-	}
-
 	public String getCountry() {
 		return country;
 	}
@@ -59,12 +49,12 @@ public class Score {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
-	public String getCity() {
-		return city;
+	
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 }

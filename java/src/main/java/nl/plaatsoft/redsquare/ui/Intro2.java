@@ -23,11 +23,11 @@ public class Intro2 extends MyPanel {
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);														
 		setBackground(new Background(backgroundImage));
 		
-		getChildren().add(new MyLabel(0,30,"For more information visit",26, "white"));
-		getChildren().add(new MyLabel(0,70,"www.plaatsoft.nl",26, "white"));
+		getChildren().add(new MyLabel(0,30,"For more information visit",26));
+		getChildren().add(new MyLabel(0,70,"www.plaatsoft.nl",26));
 		MyImageView imageView1 = new MyImageView(200,150, "images/logo2.png",1);		
 		getChildren().add(imageView1);
-		getChildren().add(new MyLabel(0,410,"RedSquare is also available for Nintendo Wii",16, "white"));
+		getChildren().add(new MyLabel(0,410,"RedSquare is also available for Nintendo Wii",16));
 		
 		setOnMousePressed(new EventHandler<MouseEvent>() {
 

@@ -24,7 +24,7 @@ public class Credits extends MyPanel {
 	    setBackground(background);
 	    
 	    int y=20;
-	    getChildren().add( new MyLabel(0, y, "Credits", 60, "white"));
+	    getChildren().add( new MyLabel(0, y, "Credits", 60, "white", "-fx-font-weight: bold;"));
 	    y+=80;
 	    getChildren().add( new MyLabel(0, y, "GAME LOGIC", 24, "white"));
 	    y+=30;

@@ -51,14 +51,13 @@ public class CloudScore {
 			    String dt = jsonobject.getString("dt");
 			    int points = jsonobject.getInt("score");
 			    int level = jsonobject.getInt("level");
-			    String user = "";
-			    String city = "";
+			    String nickname = "";
 			    String country = "";
 			    
 			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			    Date date = df.parse(dt);
 			    
-				Score score = new Score(date, points, level, user, country, city);
+				Score score = new Score(date, points, level, nickname, country);
 			  	ScoreLocal.addScore(score);  	   
 			}			
 		} catch (Exception e) {
@@ -83,14 +82,13 @@ public class CloudScore {
 			    String dt = jsonobject.getString("dt");
 			    int points = jsonobject.getInt("score");
 			    int level = jsonobject.getInt("level");
-			    String user = jsonobject.getString("username");
+			    String nickname = jsonobject.getString("nickname");
 			    String country = jsonobject.getString("country");
-			    String city = "";
 			    			    
 			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			    Date date = df.parse(dt);
 			    
-				Score score = new Score(date, points, level, user, country, city);
+				Score score = new Score(date, points, level, nickname, country);
 			  	ScoreGlobal.addScore(score);  	   
 			}			
 		} catch (Exception e) {

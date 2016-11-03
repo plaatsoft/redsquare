@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.TimeZone;
 
-import org.apache.log4j.Logger;
-
 import javafx.animation.AnimationTimer;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
@@ -25,6 +23,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
 import nl.plaatsoft.redsquare.network.CloudScore;
+import nl.plaatsoft.redsquare.network.CloudUser;
 import nl.plaatsoft.redsquare.resources.Square;
 import nl.plaatsoft.redsquare.resources.Squares;
 import nl.plaatsoft.redsquare.tools.Constants;
@@ -113,22 +112,22 @@ public class Game extends MyPanel {
  	   
 	   getChildren().add(new MyButton(230, 380, "Exit", 18, Navigator.HOME));
   	   int y=50;
-  	   getChildren().add(new MyLabel(0, y, "Game Over",60, "black"));
+  	   getChildren().add(new MyLabel(0, y, "Game Over",60, "black", "-fx-font-weight: bold;"));
   	   y=y+80;
-  	   getChildren().add(new MyLabel(0, y, "Play Time",30, "black"));
+  	   getChildren().add(new MyLabel(0, y, "Play Time",30, "black", "-fx-font-weight: bold;"));
   	   y=y+35;
   	   getChildren().add(new MyLabel(0, y, label2.getText(),20, "black"));
   	   y=y+30;
-  	   getChildren().add(new MyLabel(0, y, "Score", 30, "black"));
+  	   getChildren().add(new MyLabel(0, y, "Score", 30, "black", "-fx-font-weight: bold;"));
   	   y=y+35;
   	   getChildren().add(new MyLabel(0, y, label1.getText(),20, "black"));
   	   y=y+30;
   	  	
-  	   score = new Score(starttime, points, level, "", "", "");
+  	   score = new Score(starttime, points, level, CloudUser.getNickname(), "");
   	   int ranking = ScoreLocal.addScore(score);  	   
   	   
   	   if (ranking<16) {
-  		   getChildren().add(new MyLabel(0, y, "You reached the "+ranking+"th place in the highscore!",28, "black"));
+  		   getChildren().add(new MyLabel(0, y, "You reached the "+ranking+"th place in your personal high score!",20, "black"));
   	   }
   	   
   	   if (ranking<6) {
@@ -199,10 +198,13 @@ public class Game extends MyPanel {
         canvas.setLayoutX(Constants.BORDER_SIZE);
         canvas.setLayoutY(Constants.BORDER_SIZE);
         	            	       	   
-        label1 = new MyLabel(10, 5 ,""+points,18, "white");
-        label2 = new MyLabel(280, 5, "00:00:00"+points, 18, "white");
-        label3 = new MyLabel(620, 5, ""+level, 18, "white");
-                                			
+        getChildren().add( new MyLabel(10, 5 ,"Score: ",18, "white", "-fx-font-weight: bold;" ));
+        label1 = new MyLabel(65, 5 ,""+score, 18 );
+        getChildren().add( new MyLabel(240, 5 ,"Time: ",18, "white", "-fx-font-weight: bold;" ));
+        label2 = new MyLabel(290, 5, "00:00:00", 18 );
+        getChildren().add( new MyLabel(560, 5 ,"Level: ",18, "white", "-fx-font-weight: bold;" ));
+        label3 = new MyLabel(610, 5, ""+level, 18 );
+        
 		setBackground(background);
 		getChildren().add(canvas);
 		getChildren().add(blue1);
@@ -242,7 +244,7 @@ public class Game extends MyPanel {
 	        	   blue4.setStep(level);	
 	           }
 	     	           
-	           label2.setText(""+formatter.format(diff1));
+	           label2.setText(formatter.format(diff1));
 	           label3.setText(""+level);
 	           
 	           if (collisionDetection()) {

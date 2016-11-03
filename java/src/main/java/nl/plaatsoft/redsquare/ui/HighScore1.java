@@ -33,14 +33,14 @@ public class HighScore1 extends MyPanel {
 		setBackground(background);
 		
 		y=0;    
-		getChildren().add (new MyLabel(0, y, "Local High Score", 50, "white"));		
+		getChildren().add (new MyLabel(0, y, "Personal High Score", 50, "white", "-fx-font-weight: bold;"));		
 		                
     	y+=60;    	
-    	getChildren().add(new MyLabel(30, y, "Nr", 30, "white"));
-    	getChildren().add(new MyLabel(80, y, "Date", 30, "white"));
-		getChildren().add(new MyLabel(300, y, "Score", 30, "white"));	
-		getChildren().add(new MyLabel(400, y, "Level", 30, "white"));
-		getChildren().add(new MyLabel(490, y, "Award", 30, "white"));	
+    	getChildren().add(new MyLabel(30, y, "Nr", 30));
+    	getChildren().add(new MyLabel(80, y, "Date", 30));
+		getChildren().add(new MyLabel(300, y, "Score", 30));	
+		getChildren().add(new MyLabel(400, y, "Level", 30));
+		getChildren().add(new MyLabel(490, y, "Award", 30));	
 		y=y+20;
 				
 		lines=1;
@@ -48,10 +48,10 @@ public class HighScore1 extends MyPanel {
 		while (iter.hasNext()) {
 			y+=20;
 			Score score = (Score) iter.next();	
-			getChildren().add(new MyLabel(30, y, ""+lines, 20, "white"));					
-			getChildren().add(new MyLabel(80, y, formatter.format(score.getTimestamp()), 20, "white"));
-			getChildren().add(new MyLabel(300, y, ""+score.getScore(), 20, "white"));	
-			getChildren().add(new MyLabel(400, y, ""+score.getLevel(), 20, "white"));	
+			getChildren().add(new MyLabel(30, y, ""+lines, 20));					
+			getChildren().add(new MyLabel(80, y, formatter.format(score.getTimestamp()), 20));
+			getChildren().add(new MyLabel(300, y, ""+score.getScore(), 20));	
+			getChildren().add(new MyLabel(400, y, ""+score.getLevel(), 20));	
 			
 			if (lines<6) {
 				for (int x=0; x<(6-lines); x++) {

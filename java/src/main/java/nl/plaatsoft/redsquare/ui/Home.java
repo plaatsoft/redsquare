@@ -57,8 +57,8 @@ public class Home extends MyPanel {
 		Background background = new Background(backgroundImage);
 		setBackground(background);
 		
-		getChildren().add (new MyLabel(30, 30, Constants.APP_NAME+" v"+Constants.APP_VERSION, 30, "white"));		
-		getChildren().add (new MyLabel(30, 70, Constants.APP_BUILD, 20, "white"));
+		getChildren().add (new MyLabel(30, 30, Constants.APP_NAME+" v"+Constants.APP_VERSION, 30, "white", "-fx-font-weight: bold;"));		
+		getChildren().add (new MyLabel(30, 70, Constants.APP_BUILD, 20));
 		label3 = new MyLabel(30, 420, "", 20, "white");
 		getChildren().add(label3);
 				

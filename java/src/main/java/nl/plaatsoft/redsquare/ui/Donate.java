@@ -23,7 +23,7 @@ public class Donate extends MyPanel {
     	setBackground(background);
     	
     	int y=20;
-    	getChildren().add(new MyLabel(0, y, "Donate", 60, "white"));
+    	getChildren().add(new MyLabel(0, y, "Donate", 60, "white", "-fx-font-weight: bold;"));
     	y+=80;
     	getChildren().add(new MyLabel(0, y, "If you enjoy this game, please sent me a", 24, "white"));
     	y+=30;

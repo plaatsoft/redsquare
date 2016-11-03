@@ -26,12 +26,12 @@ public class Intro1 extends MyPanel {
 		BackgroundImage backgroundImage = new BackgroundImage(image1, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		setBackground( new Background(backgroundImage));
 		
-		getChildren().add( new MyLabel(0,30,"Created by PlaatSoft",26, "white"));
-		getChildren().add( new MyLabel(0,70,"www.plaatsoft.nl",26, "white"));
+		getChildren().add( new MyLabel(0,30,"Created by PlaatSoft",26));
+		getChildren().add( new MyLabel(0,70,"www.plaatsoft.nl",26));
 		MyImageView imageView1 = new MyImageView(80,150, "images/logo1.png",1);		
 		getChildren().add(imageView1);
-		getChildren().add( new MyLabel(0,410,"This software is open source and may be copied, distributed or modified",16, "white"));
-		getChildren().add( new MyLabel(0,430,"under the terms of the GNU General Public License (GPL) version 3",16, "white"));
+		getChildren().add( new MyLabel(0,410,"This software is open source and may be copied, distributed or modified",16));
+		getChildren().add( new MyLabel(0,430,"under the terms of the GNU General Public License (GPL) version 3",16));
 		
 		setOnMousePressed(new EventHandler<MouseEvent>() {
 	        public void handle(MouseEvent t) {

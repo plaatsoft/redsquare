@@ -69,7 +69,7 @@ public class ReleaseNotes extends MyPanel {
          
          getChildren().add(s1);
                   
-    	getChildren().add( new MyLabel(0, 20, "Release Notes", 60, "white"));
+    	getChildren().add( new MyLabel(0, 20, "Release Notes", 60, "white", "-fx-font-weight: bold;"));
     	text = new MyLabel(30, 120, version[0], 20, "white");
     	getChildren().add( text );    	
     	getChildren().add( new MyButton(230, 420, "Close", 18, Navigator.HOME));     
