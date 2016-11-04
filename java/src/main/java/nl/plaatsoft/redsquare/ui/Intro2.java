@@ -1,3 +1,24 @@
+/**
+ *  @file
+ *  @brief 
+ *  @author wplaat
+ *
+ *  Copyright (C) 2008-2016 PlaatSoft
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
 package nl.plaatsoft.redsquare.ui;
 
 import javafx.animation.AnimationTimer;
@@ -9,13 +30,14 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
 
 public class Intro2 extends MyPanel {
 
+	private MyImageView imageView1;
+	
 	public void draw() {	
 		
 		Image image1 = new Image("images/background2.png");
@@ -25,7 +47,7 @@ public class Intro2 extends MyPanel {
 		
 		getChildren().add(new MyLabel(0,30,"For more information visit",26));
 		getChildren().add(new MyLabel(0,70,"www.plaatsoft.nl",26));
-		MyImageView imageView1 = new MyImageView(200,150, "images/logo2.png",1);		
+		imageView1 = new MyImageView(200,150, "images/logo2.png",1);		
 		getChildren().add(imageView1);
 		getChildren().add(new MyLabel(0,410,"RedSquare is also available for Nintendo Wii",16));
 		

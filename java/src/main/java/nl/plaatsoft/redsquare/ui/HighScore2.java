@@ -1,3 +1,24 @@
+/**
+ *  @file
+ *  @brief 
+ *  @author wplaat
+ *
+ *  Copyright (C) 2008-2016 PlaatSoft
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
 package nl.plaatsoft.redsquare.ui;
 
 import javafx.beans.value.ChangeListener;
@@ -18,12 +39,10 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 
 import nl.plaatsoft.redsquare.network.CloudScore;
-import nl.plaatsoft.redsquare.tools.Constants;
 import nl.plaatsoft.redsquare.tools.MyButton;
 import nl.plaatsoft.redsquare.tools.MyImageView;
 import nl.plaatsoft.redsquare.tools.MyLabel;
 import nl.plaatsoft.redsquare.tools.MyPanel;
-//import nl.plaatsoft.redsquare.tools.MyProgressIndicator;
 import nl.plaatsoft.redsquare.tools.Score;
 import nl.plaatsoft.redsquare.tools.ScoreGlobal;
 
@@ -34,7 +53,6 @@ public class HighScore2 extends MyPanel {
 	private int y;
 	private int lines; 
 	private Task<Void> task;
-	//private MyProgressIndicator progressIndicator;
 			
 	private void showTable() {
 		
@@ -74,9 +92,6 @@ public class HighScore2 extends MyPanel {
 		
 		y=0;
 		getChildren().add(new MyLabel(0, y, "Ultimate High Score", 50, "white", "-fx-font-weight: bold;"));		
- 
-		//progressIndicator = new MyProgressIndicator((Constants.WIDTH/2)-70, (Constants.HEIGHT/2)-70);	
-		//getChildren().add(progressIndicator);
 				
 		y+=60;    	
     	getChildren().add(new MyLabel(30, y, "Nr", 30));
@@ -100,7 +115,6 @@ public class HighScore2 extends MyPanel {
 	        public void changed(ObservableValue<? extends State> observable, State oldValue, Worker.State newState) {
 	            if(newState==Worker.State.SUCCEEDED){
 	            	showTable();
-	            	//getChildren().remove(progressIndicator);
 	            }
 	        }
 	    });		

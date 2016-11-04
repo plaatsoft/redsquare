@@ -1,3 +1,24 @@
+/**
+ *  @file
+ *  @brief 
+ *  @author wplaat
+ *
+ *  Copyright (C) 2008-2016 PlaatSoft
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
 package nl.plaatsoft.redsquare.ui;
 
 import java.text.SimpleDateFormat;
@@ -199,10 +220,10 @@ public class Game extends MyPanel {
         canvas.setLayoutY(Constants.BORDER_SIZE);
         	            	       	   
         getChildren().add( new MyLabel(10, 5 ,"Score: ",18, "white", "-fx-font-weight: bold;" ));
-        label1 = new MyLabel(65, 5 ,""+score, 18 );
+        label1 = new MyLabel(70, 5 ,""+score, 18 );
         getChildren().add( new MyLabel(240, 5 ,"Time: ",18, "white", "-fx-font-weight: bold;" ));
-        label2 = new MyLabel(290, 5, "00:00:00", 18 );
-        getChildren().add( new MyLabel(560, 5 ,"Level: ",18, "white", "-fx-font-weight: bold;" ));
+        label2 = new MyLabel(300, 5, "00:00:00", 18 );
+        getChildren().add( new MyLabel(550, 5 ,"Level: ",18, "white", "-fx-font-weight: bold;" ));
         label3 = new MyLabel(610, 5, ""+level, 18 );
         
 		setBackground(background);
