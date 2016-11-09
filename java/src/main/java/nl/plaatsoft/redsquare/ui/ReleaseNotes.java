@@ -40,6 +40,10 @@ public class ReleaseNotes extends MyPanel {
 	
 	private static String[] version = {
 						
+			"09-11-2016 (Version 0.3)\n"		  	
+		  	+ "- Minor GUI update.\n"
+		  	+ "- Obfuscate classes.\n",
+					
 	        "03-11-2016 (Version 0.2)\n"
 	      	+ "- Added setting page to control nickname.\n"
 			+ "- Protect blue squares against size hacking.\n"

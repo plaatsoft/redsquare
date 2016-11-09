@@ -21,6 +21,7 @@
 
 package nl.plaatsoft.redsquare.ui;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -151,7 +152,7 @@ public class Navigator {
 				break;	
 				
 			case EXIT:
-				System.exit(0);
+				Platform.exit();
 				break;
 		}
 	}

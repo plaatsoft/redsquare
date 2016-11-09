@@ -21,16 +21,19 @@
 
 package nl.plaatsoft.redsquare.tools;
 
-public class Constants {
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-	public final static String APP_NAME = "RedSquare";
-	public final static String APP_VERSION = "0.3";
-	public final static String APP_BUILD = "Build (09-11-2016)";
+public class MyMusic {
+
+	static MediaPlayer mp;
 	
-	public final static String APP_WS_NAME = "Java-RedSquare";
-	public final static String APP_WS_URL = "https://service.plaatsoft.nl";
+	public static void play() {
+		String path = MyMusic.class.getResource("/music/music.mp3").toExternalForm();
+        Media media = new Media(path);
+        mp = new MediaPlayer(media);
+        mp.setCycleCount(MediaPlayer.INDEFINITE);
+        mp.play();
+	}
 	
-	public final static int BORDER_SIZE = 35;
-	public final static int WIDTH = 640;
-	public final static int HEIGHT = 480;		
 }
